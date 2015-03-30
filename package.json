@@ -1,0 +1,26 @@
+{
+  "name": "react-native-navbar",
+  "version": "0.1.0",
+  "description": "Simple customizable navbar component for react-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kureev/react-native-navbar.git"
+  },
+  "keywords": [
+    "react-native",
+    "navbar"
+  ],
+  "author": "Alexey Kureev <kureev-mail@ya.ru> (https://github.com/Kureev)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kureev/react-native-navbar/issues"
+  },
+  "homepage": "https://github.com/Kureev/react-native-navbar",
+  "dependencies": {
+    "react-native": "^0.3.1"
+  }
+}
