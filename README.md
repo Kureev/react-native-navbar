@@ -1,6 +1,8 @@
 ## Customizable navbar for react-native
 **Attention:** this component has been designed for usage with [Navigator](http://facebook.github.io/react-native/docs/navigator.html#content).
 
+![Image of Yaktocat](http://i59.tinypic.com/1051boj.png)
+
 ### Installation
 ```bash
 npm install react-native-navbar
