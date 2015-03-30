@@ -22,10 +22,13 @@ var NavigationBar = React.createClass({
       buttonsColor
     } = this.props;
 
+    var customStyle = this.props.backgroundColor ? 
+      { color: buttonsColor } : {};
+
     return (
       <TouchableOpacity onPress={onPrev || navigator.pop}>
         <View style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, {color: buttonsColor}]}>
+          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle]}>
             {prevTitle || 'Back'}
           </Text>
         </View>
@@ -62,10 +65,14 @@ var NavigationBar = React.createClass({
     if (!onNext) {
       return <Text style={styles.navBarRightButton}></Text>;
     }
+
+    var customStyle = this.props.backgroundColor ? 
+      { color: buttonsColor } : {};
+
     return (
       <TouchableOpacity onPress={onNext}>
         <View style={styles.navBarRightButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, {color: buttonsColor}]}>
+          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle]}>
             {nextTitle || 'Next'}
           </Text>
         </View>
@@ -74,9 +81,12 @@ var NavigationBar = React.createClass({
   },
 
   render: function() {
+    var customStyle = this.props.backgroundColor ? 
+      { backgroundColor: this.props.backgroundColor } : {};
+
     return (
       <StaticContainer shouldUpdate={false}>
-        <View style={[styles.navBarContainer, {backgroundColor: this.props.backgroundColor}]}>
+        <View style={[styles.navBarContainer, customStyle]}>
           {this.getLeftButtonElement()}
           {this.getTitleElement()}
           {this.getRightButtonElement()}
