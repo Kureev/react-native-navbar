@@ -33,7 +33,7 @@ var NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customPrev) {
-      return React.addons.cloneElement(customPrev, { navigator: navigator });
+      return React.addons.cloneWithProps(customPrev, { navigator: navigator });
     }
 
     /*
@@ -96,7 +96,7 @@ var NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customNext) {
-      return React.addons.cloneElement(customNext, { navigator: navigator });;
+      return React.addons.cloneWithProps(customNext, { navigator: navigator });;
     }
 
     /*
