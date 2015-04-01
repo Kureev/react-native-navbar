@@ -68,8 +68,16 @@ var NavigationBar = React.createClass({
   getTitleElement: function() {
     var {
       title,
-      titleColor
+      titleColor,
+      customTitle
     } = this.props;
+
+    /*
+     * Return `customTitle` component if we have it
+     */
+    if (customTitle) {
+      return customTitle;
+    }
 
     if (title && !title.length) {
       return;
