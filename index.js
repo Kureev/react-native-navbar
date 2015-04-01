@@ -6,7 +6,7 @@ var {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } = React;
 
 var NavigatorNavigationBarStyles = require('NavigatorNavigationBarStyles');
@@ -25,7 +25,8 @@ var NavigationBar = React.createClass({
       navigator,
       buttonsColor,
       routeStack,
-      customPrev
+      customPrev,
+      backgroundColor
     } = this.props;
 
     /*
@@ -33,7 +34,7 @@ var NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customPrev) {
-      return React.addons.cloneElement(customPrev, { navigator: navigator });
+      return React.addons.cloneWithProps(customPrev, { navigator });
     }
 
     /*
@@ -48,7 +49,7 @@ var NavigationBar = React.createClass({
     /*
      * Apply custom background styles to button
      */
-    var customStyle = this.props.backgroundColor ? { color: buttonsColor } : {};
+    var customStyle = backgroundColor ? { color: buttonsColor } : {};
 
     return (
       <TouchableOpacity onPress={onPrev || navigator.pop}>
@@ -96,7 +97,7 @@ var NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customNext) {
-      return React.addons.cloneElement(customNext, { navigator: navigator });;
+      return React.addons.cloneWithProps(customNext, { navigator });
     }
 
     /*
@@ -111,8 +112,7 @@ var NavigationBar = React.createClass({
     /*
      * Apply custom background styles to button
      */
-    var customStyle = this.props.backgroundColor ?
-      { color: buttonsColor } : {};
+    var customStyle = backgroundColor ? { color: buttonsColor } : {};
 
     return (
       <TouchableOpacity onPress={onNext}>
