@@ -3,6 +3,15 @@
 
 ![Image of Yaktocat](http://i59.tinypic.com/1051boj.png)
 
+### Content
+- [Installation](#installation)
+- [Usage example](#usage-example)
+- [Custom elements](#custom-elements)
+  - [Custom buttons](#custom-buttons)
+  - [Custom title](#custom-title)
+- [Component props](#component-props)
+- [Questions?](#questions)
+
 ### Installation
 ```bash
 npm install react-native-navbar
@@ -48,7 +57,10 @@ var ExampleProject = React.createClass({
 });
 ```
 
-### Custom buttons
+### Custom elements
+In the cases when you need some *extra* customization (like replacing title by image, adding extra buttons, etc), you can use custom components.
+
+#### Custom buttons
 There are some cases when you need to use custom buttons and it's not hard at all:
 ```javascript
 var CustomPrevButton = require('./CustomPrevButton');
@@ -63,6 +75,16 @@ var navigationBar = (
 );
 ```
 In every button you'll receive a [`navigator`](http://facebook.github.io/react-native/docs/navigator.html#navigation-methods) property.
+
+#### Custom title
+If for some reason you want to customize a title (add image or whatever), you can use `customTitle` prop:
+```javascript
+var CustomTitle = require('./CustomTitle');
+
+var navigationBar = (
+  <NavigationBar customTitle={CustomTitle} />
+);
+```
 
 ### Component props
 - `title` (String) - Title of the navbar
