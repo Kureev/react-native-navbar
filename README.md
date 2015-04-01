@@ -32,7 +32,7 @@ var ExampleProject = React.createClass({
       </View>
     );
   },
-  
+
   render: function() {
     return (
       <Navigator
@@ -48,15 +48,33 @@ var ExampleProject = React.createClass({
 });
 ```
 
+### Custom buttons
+There are some cases when you need to use custom buttons and it's not hard at all:
+```javascript
+var CustomPrevButton = require('./CustomPrevButton');
+var CustomNextButton = require('./CustomNextButton');
+
+var navigationBar = (
+  <NavigationBar
+    title="Custom buttons"
+    customPrev={<CustomPrevButton/>}
+    customNext={<CustomNextButton/>}
+  />
+);
+```
+In every button you'll receive a [`navigator`](http://facebook.github.io/react-native/docs/navigator.html#navigation-methods) property.
+
 ### Component props
-- title (String) - Title of the navbar
-- titleColor (String) - Color of the navbar title (hex/rgb(a))
-- buttonsColor (String) - Color of the buttons
-- backgroundColor (String) - Color of the navbar's background
-- onPrev (Function) - Callback on left navbar button click
-- onNext (Function) - Callback on right navbar button click
-- prevTitle (String) - Caption of the "back" button
-- nextTitle (String) - Caption of the "next" button
+- `title` (String) - Title of the navbar
+- `titleColor` (String) - Color of the navbar title (hex/rgb(a))
+- `buttonsColor` (String) - Color of the buttons
+- `backgroundColor` (String) - Color of the navbar's background
+- `onPrev` (Function) - Callback on left navbar button click
+- `onNext` (Function) - Callback on right navbar button click
+- `prevTitle` (String) - Caption of the "back" button
+- `nextTitle` (String) - Caption of the "next" button
+- `customPrev` (React.Component) - Component to use instead of standart prev button
+- `customNext` (React.Component) - Component to use instead of standart next button
 
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)
