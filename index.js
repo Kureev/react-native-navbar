@@ -14,16 +14,41 @@ var StaticContainer = require('StaticContainer.react');
 var cssVar = require('cssVar');
 
 var NavigationBar = React.createClass({
+
+  /**
+   * Describes how we get a left button in the navbar
+   */
   getLeftButtonElement: function() {
     var {
       onPrev,
       prevTitle,
       navigator,
-      buttonsColor
+      buttonsColor,
+      routeStack,
+      customPrev
     } = this.props;
 
-    var customStyle = this.props.backgroundColor ? 
-      { color: buttonsColor } : {};
+    /*
+     * If we have a `customPrev` component, then return
+     * it's clone with additional attributes
+     */
+    if (customPrev) {
+      return React.addons.cloneElement(customPrev, { navigator: navigator });
+    }
+
+    /*
+     * If there are no routes in the stack and we haven't received
+     * `onPrev` click handler, we return just a placeholder for button
+     * to keep markup consistant and title aligned to center
+     */
+    if (routeStack && routeStack.length <= 1 && !onPrev) {
+      return <View style={styles.navBarLeftButton}></View>;
+    }
+
+    /*
+     * Apply custom background styles to button
+     */
+    var customStyle = this.props.backgroundColor ? { color: buttonsColor } : {};
 
     return (
       <TouchableOpacity onPress={onPrev || navigator.pop}>
@@ -36,13 +61,16 @@ var NavigationBar = React.createClass({
     );
   },
 
+  /*
+   * Describe how we get a title for the navbar
+   */
   getTitleElement: function() {
     var {
       title,
       titleColor
     } = this.props;
 
-    if (!title.length) {
+    if (title && !title.length) {
       return;
     }
 
@@ -53,20 +81,37 @@ var NavigationBar = React.createClass({
     );
   },
 
-  getRightButtonElement: function(onNext, nextTitle, navigator) {
+  getRightButtonElement: function() {
     var {
       onNext,
       nextTitle,
       navigator,
       buttonsColor,
-      backgroundColor
+      backgroundColor,
+      customNext
     } = this.props;
 
+    /*
+     * If we have a `customNext` component, then return
+     * it's clone with additional attributes
+     */
+    if (customNext) {
+      return React.addons.cloneElement(customNext, { navigator: navigator });;
+    }
+
+    /*
+     * If we haven't received `onNext` handler, then just return
+     * a placeholder for button to keep markup consistant and
+     * title aligned to the center
+     */
     if (!onNext) {
       return <Text style={styles.navBarRightButton}></Text>;
     }
 
-    var customStyle = this.props.backgroundColor ? 
+    /*
+     * Apply custom background styles to button
+     */
+    var customStyle = this.props.backgroundColor ?
       { color: buttonsColor } : {};
 
     return (
@@ -81,7 +126,7 @@ var NavigationBar = React.createClass({
   },
 
   render: function() {
-    var customStyle = this.props.backgroundColor ? 
+    var customStyle = this.props.backgroundColor ?
       { backgroundColor: this.props.backgroundColor } : {};
 
     return (
