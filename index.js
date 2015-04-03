@@ -24,10 +24,11 @@ var NavigationBar = React.createClass({
       prevTitle,
       navigator,
       buttonsColor,
-      routeStack,
       customPrev,
       backgroundColor
     } = this.props;
+
+    var getCurrentRoutes = navigator.getCurrentRoutes;
 
     /*
      * If we have a `customPrev` component, then return
@@ -42,7 +43,7 @@ var NavigationBar = React.createClass({
      * `onPrev` click handler, we return just a placeholder for button
      * to keep markup consistant and title aligned to center
      */
-    if (routeStack && routeStack.length <= 1 && !onPrev) {
+    if (getCurrentRoutes && getCurrentRoutes().length <= 1 && !onPrev) {
       return <View style={styles.navBarLeftButton}></View>;
     }
 
