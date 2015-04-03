@@ -97,6 +97,7 @@ var navigationBar = (
 - `nextTitle` (String) - Caption of the "next" button
 - `customPrev` (React.Component) - Component to use instead of standart prev button
 - `customNext` (React.Component) - Component to use instead of standart next button
+- `customTitle` (React.Component) - Component to use instead of standart title
 
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)
