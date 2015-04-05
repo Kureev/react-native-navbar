@@ -25,10 +25,20 @@ var NavigationBar = React.createClass({
       navigator,
       buttonsColor,
       customPrev,
-      backgroundColor
+      backgroundColor,
+      isInitial
     } = this.props;
 
     var getCurrentRoutes = navigator.getCurrentRoutes;
+
+    /*
+     * İs it a initial View
+     * if it's an initial view don't draw anything to left
+     */
+    if( isInitial ){
+      return ( null );
+    }
+
 
     /*
      * If we have a `customPrev` component, then return
@@ -141,9 +151,15 @@ var NavigationBar = React.createClass({
     return (
       <StaticContainer shouldUpdate={false}>
         <View style={[styles.navBarContainer, customStyle]}>
-          {this.getLeftButtonElement()}
-          {this.getTitleElement()}
-          {this.getRightButtonElement()}
+          <View style={styles.left1}>
+            {this.getLeftButtonElement()}
+          </View>
+          <View style={styles.center2}>
+            {this.getTitleElement()}
+          </View>
+          <View style={styles.right3}>
+            {this.getRightButtonElement()}
+          </View>
         </View>
       </StaticContainer>
     );
@@ -156,34 +172,48 @@ var styles = StyleSheet.create({
     top: 0,
     left: 0,
     width: NavigatorNavigationBarStyles.General.ScreenWidth,
-    backgroundColor: 'white',
+    backgroundColor : 'white',
     flexDirection: 'row',
     alignItems: 'flex-end',
     paddingBottom: 5,
     borderBottomColor: 'rgba(0, 0, 0, 0.5)',
     borderBottomWidth: 1 / PixelRatio.get(),
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+  },
+  barCenter: {
+    backgroundColor : 'green',
+    //flexGrow : 2,
+  },
+  left1 : {
+    flex : 1
+  },
+  center2 : {
+    flex : 2
+  },
+  right3 : {
+    flex : 1
   },
   navBarText: {
     fontSize: 16,
     marginVertical: 10,
     flex: 2,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   navBarTitleText: {
     color: cssVar('fbui-bluegray-60'),
     fontWeight: '500',
     marginVertical: 9,
+    //backgroundColor : 'red',
   },
   navBarLeftButton: {
     paddingLeft: 10,
     alignItems: 'flex-start',
-    flex: 1
+    flex: 1,
   },
   navBarRightButton: {
     paddingRight: 10,
     alignItems: 'flex-end',
-    flex: 1
+    flex: 1,
   },
   navBarButtonText: {
     color: cssVar('fbui-accent-blue'),
