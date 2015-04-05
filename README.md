@@ -49,7 +49,7 @@ var ExampleProject = React.createClass({
         renderScene={this.renderScene}
         initialRoute={{
           component: InitialView,
-          navigationBar: <NavigationBar title="Initial View"/>
+          navigationBar: <NavigationBar isInitial={true} title="Initial View"/>
         }}
       />
     );
@@ -98,6 +98,7 @@ var navigationBar = (
 - `customPrev` (React.Component) - Component to use instead of standart prev button
 - `customNext` (React.Component) - Component to use instead of standart next button
 - `customTitle` (React.Component) - Component to use instead of standart title
+- `isInitial` (Boolean) - Can use for hiding back button on any state
 
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)
