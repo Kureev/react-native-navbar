@@ -93,6 +93,7 @@ var navigationBar = (
 - `backgroundColor` (String) - Color of the navbar's background
 - `onPrev` (Function) - Callback on left navbar button click
 - `onNext` (Function) - Callback on right navbar button click
+- `hidePrev` (Boolean) - Should `prev` button be hidden or not
 - `prevTitle` (String) - Caption of the "back" button
 - `nextTitle` (String) - Caption of the "next" button
 - `customPrev` (React.Component) - Component to use instead of standart prev button
