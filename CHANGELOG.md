@@ -1,3 +1,7 @@
+### 0.3.0
+- Added `hidePrev` option
+- Default navbar position is on top now
+
 ### 0.2.1
 - Added `customTitle` option
 - Fixed a bug with custom elements
