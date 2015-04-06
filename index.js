@@ -29,9 +29,6 @@ var NavigationBar = React.createClass({
       backgroundColor
     } = this.props;
 
-
-    console.log("route stack : ", routeStack);
-
     /*
      * If we have a `customPrev` component, then return
      * it's clone with additional attributes
