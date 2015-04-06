@@ -69,6 +69,7 @@ var CustomNextButton = require('./CustomNextButton');
 var navigationBar = (
   <NavigationBar
     title="Custom buttons"
+    customPrev = { <View style={styles.navBarLeftButton}></View> }
     customPrev={<CustomPrevButton/>}
     customNext={<CustomNextButton/>}
   />
