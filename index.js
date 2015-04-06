@@ -15,25 +15,6 @@ var cssVar = require('cssVar');
 
 var NavigationBar = React.createClass({
 
-  /*
-   * If there are no routes in the stack, `hidePrev` isn't provided or false, 
-   * and we haven't received `onPrev` click handler, return true
-   */
-  prevButtonShouldBeHidden: function() {
-    var {
-      onPrev,
-      hidePrev,
-      navigator
-    } = this.props;
-
-    var getCurrentRoutes = navigator.getCurrentRoutes;
-
-    return (
-      hidePrev || 
-      (getCurrentRoutes && getCurrentRoutes().length <= 1 && !onPrev)
-    );
-  },
-
   /**
    * Describes how we get a left button in the navbar
    */
@@ -43,9 +24,13 @@ var NavigationBar = React.createClass({
       prevTitle,
       navigator,
       buttonsColor,
+      routeStack,
       customPrev,
       backgroundColor
     } = this.props;
+
+
+    console.log("route stack : ", routeStack);
 
     /*
      * If we have a `customPrev` component, then return
@@ -56,9 +41,11 @@ var NavigationBar = React.createClass({
     }
 
     /*
-     * Check if we need to hide `prev` button
+     * If there are no routes in the stack and we haven't received
+     * `onPrev` click handler, we return just a placeholder for button
+     * to keep markup consistant and title aligned to center
      */
-    if (this.prevButtonShouldBeHidden()) {
+    if (routeStack && routeStack.length <= 1 && !onPrev) {
       return <View style={styles.navBarLeftButton}></View>;
     }
 
@@ -156,9 +143,15 @@ var NavigationBar = React.createClass({
     return (
       <StaticContainer shouldUpdate={false}>
         <View style={[styles.navBarContainer, customStyle]}>
-          {this.getLeftButtonElement()}
-          {this.getTitleElement()}
-          {this.getRightButtonElement()}
+          <View style={styles.left1}>
+            {this.getLeftButtonElement()}
+          </View>
+          <View style={styles.center2}>
+            {this.getTitleElement()}
+          </View>
+          <View style={styles.right1}>
+            {this.getRightButtonElement()}
+          </View>
         </View>
       </StaticContainer>
     );
@@ -168,7 +161,6 @@ var NavigationBar = React.createClass({
 var styles = StyleSheet.create({
   navBarContainer: {
     height: NavigatorNavigationBarStyles.General.TotalNavHeight,
-    position: 'absolute',
     top: 0,
     left: 0,
     width: NavigatorNavigationBarStyles.General.ScreenWidth,
@@ -203,7 +195,16 @@ var styles = StyleSheet.create({
   },
   navBarButtonText: {
     color: cssVar('fbui-accent-blue'),
-  }
+  },
+  left1 : {
+    flex :1,
+  },
+  center2 : {
+    flex : 2,
+  },
+  right1 : {
+    flex : 1,
+  },
 });
 
 module.exports = NavigationBar;
