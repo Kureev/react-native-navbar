@@ -1,3 +1,6 @@
+### 0.3.1
+- Fixed navbar zIndex (removed `position: absolute`)
+
 ### 0.3.0
 - Added `hidePrev` option
 - Default navbar position is on top now
