@@ -16,7 +16,7 @@ var cssVar = require('cssVar');
 var NavigationBar = React.createClass({
 
   /*
-   * If there are no routes in the stack, `hidePrev` isn't provided or false, 
+   * If there are no routes in the stack, `hidePrev` isn't provided or false,
    * and we haven't received `onPrev` click handler, return true
    */
   prevButtonShouldBeHidden: function() {
@@ -29,7 +29,7 @@ var NavigationBar = React.createClass({
     var getCurrentRoutes = navigator.getCurrentRoutes;
 
     return (
-      hidePrev || 
+      hidePrev ||
       (getCurrentRoutes && getCurrentRoutes().length <= 1 && !onPrev)
     );
   },
@@ -168,9 +168,6 @@ var NavigationBar = React.createClass({
 var styles = StyleSheet.create({
   navBarContainer: {
     height: NavigatorNavigationBarStyles.General.TotalNavHeight,
-    position: 'absolute',
-    top: 0,
-    left: 0,
     width: NavigatorNavigationBarStyles.General.ScreenWidth,
     backgroundColor: 'white',
     flexDirection: 'row',
