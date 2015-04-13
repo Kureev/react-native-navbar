@@ -1,3 +1,13 @@
+### 0.4.0
+- Added `basic` and `customElements` examples
+
+### 0.3.3
+- Navigation bar styles refactoring. Now default toolbar title is always on bottom, under prev and next button.
+- Removed flexboxes from the header
+
+### 0.3.2
+- Documentation fixes
+
 ### 0.3.1
 - Fixed navbar zIndex (removed `position: absolute`)
 
