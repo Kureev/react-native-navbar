@@ -12,9 +12,13 @@ var {
   View,
   Navigator,
   Image,
+  TouchableOpacity,
 } = React;
 
 var styles = StyleSheet.create({
+  navigator: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -33,23 +37,16 @@ var styles = StyleSheet.create({
   },
 });
 
-var CustomTitle = React.createClass({
-  render: function() {
-    return (
-      <Text>Custom title</Text>
-    );
-  }
-});
-
 var prevImage = 'http://cdn.flaticon.com/png/256/34097.png';
 var CustomPrev = React.createClass({
   render: function() {
     return (
-      <Image
-        source={{uri: prevImage}}
-        style={{ width: 24, height: 24, left: 10, bottom: 5 }}
-        onPress={function() { alert('test'); }}
-      />
+      <TouchableOpacity onPress={function() { alert('prev'); }}>
+        <Image
+          source={{uri: prevImage}}
+          style={{ width: 24, height: 24, left: 10, bottom: 5 }}
+        />
+      </TouchableOpacity>
     );
   }
 });
@@ -58,10 +55,12 @@ var nextImage = 'http://cdn.flaticon.com/png/256/64410.png';
 var CustomNext = React.createClass({
   render: function() {
     return (
-      <Image
-        source={{uri: nextImage}}
-        style={{ width: 24, height: 24, right: 10, bottom: 5 }}
-      />
+      <TouchableOpacity onPress={function() { alert('next'); }}>
+        <Image
+          source={{uri: nextImage}}
+          style={{ width: 24, height: 24, right: 10, bottom: 5 }}
+        />
+      </TouchableOpacity>
     );
   }
 });
