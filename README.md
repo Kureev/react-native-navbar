@@ -57,6 +57,8 @@ var ExampleProject = React.createClass({
 });
 ```
 
+Also, you can take a look on [`examples`](https://github.com/Kureev/react-native-navbar/tree/master/examples) folder
+
 ### Custom elements
 In the cases when you need some *extra* customization (like replacing title by image, adding extra buttons, etc), you can use custom components.
 
