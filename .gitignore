@@ -1,1 +1,4 @@
 node_modules
+**/xcuserdata
+.DS_Store
+**/.DS_Store
