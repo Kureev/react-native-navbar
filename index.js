@@ -156,8 +156,8 @@ var NavigationBar = React.createClass({
     return (
       <StaticContainer shouldUpdate={false}>
         <View style={[styles.navBarContainer, customStyle]}>
-          {this.getLeftButtonElement()}
           {this.getTitleElement()}
+          {this.getLeftButtonElement()}
           {this.getRightButtonElement()}
         </View>
       </StaticContainer>
@@ -186,17 +186,15 @@ var styles = StyleSheet.create({
   navBarTitleText: {
     color: cssVar('fbui-bluegray-60'),
     fontWeight: '500',
-    marginVertical: 9,
+    position: 'absolute',
+    width: NavigatorNavigationBarStyles.General.ScreenWidth,
+    marginTop: 30,
   },
   navBarLeftButton: {
     paddingLeft: 10,
-    alignItems: 'flex-start',
-    flex: 1
   },
   navBarRightButton: {
     paddingRight: 10,
-    alignItems: 'flex-end',
-    flex: 1
   },
   navBarButtonText: {
     color: cssVar('fbui-accent-blue'),
