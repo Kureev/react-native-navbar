@@ -13,6 +13,42 @@ var NavigatorNavigationBarStyles = require('NavigatorNavigationBarStyles');
 var StaticContainer = require('StaticContainer.react');
 var cssVar = require('cssVar');
 
+var styles = StyleSheet.create({
+  navBarContainer: {
+    height: NavigatorNavigationBarStyles.General.TotalNavHeight,
+    width: NavigatorNavigationBarStyles.General.ScreenWidth,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    paddingBottom: 5,
+    borderBottomColor: 'rgba(0, 0, 0, 0.5)',
+    borderBottomWidth: 1 / PixelRatio.get(),
+    justifyContent: 'space-between',
+  },
+  navBarText: {
+    fontSize: 16,
+    marginVertical: 10,
+    flex: 2,
+    textAlign: 'center',
+  },
+  navBarTitleText: {
+    color: cssVar('fbui-bluegray-60'),
+    fontWeight: '500',
+    position: 'absolute',
+    width: NavigatorNavigationBarStyles.General.ScreenWidth,
+    marginTop: 30,
+  },
+  navBarLeftButton: {
+    paddingLeft: 10,
+  },
+  navBarRightButton: {
+    paddingRight: 10,
+  },
+  navBarButtonText: {
+    color: cssVar('fbui-accent-blue'),
+  }
+});
+
 var NavigationBar = React.createClass({
 
   /*
@@ -42,6 +78,7 @@ var NavigationBar = React.createClass({
       onPrev,
       prevTitle,
       navigator,
+      route,
       buttonsColor,
       customPrev,
       backgroundColor
@@ -52,7 +89,7 @@ var NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customPrev) {
-      return React.addons.cloneWithProps(customPrev, { navigator });
+      return React.addons.cloneWithProps(customPrev, { navigator, route });
     }
 
     /*
@@ -85,18 +122,20 @@ var NavigationBar = React.createClass({
     var {
       title,
       titleColor,
-      customTitle
+      customTitle,
+      navigator,
+      route,
     } = this.props;
 
     /*
      * Return `customTitle` component if we have it
      */
     if (customTitle) {
-      return customTitle;
+      return React.addons.cloneWithProps(customTitle, { navigator, route });
     }
 
     if (title && !title.length) {
-      return;
+      return true;
     }
 
     return (
@@ -111,6 +150,7 @@ var NavigationBar = React.createClass({
       onNext,
       nextTitle,
       navigator,
+      route,
       buttonsColor,
       backgroundColor,
       customNext
@@ -121,7 +161,7 @@ var NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customNext) {
-      return React.addons.cloneWithProps(customNext, { navigator });
+      return React.addons.cloneWithProps(customNext, { navigator, route });
     }
 
     /*
@@ -163,42 +203,6 @@ var NavigationBar = React.createClass({
       </StaticContainer>
     );
   },
-});
-
-var styles = StyleSheet.create({
-  navBarContainer: {
-    height: NavigatorNavigationBarStyles.General.TotalNavHeight,
-    width: NavigatorNavigationBarStyles.General.ScreenWidth,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    paddingBottom: 5,
-    borderBottomColor: 'rgba(0, 0, 0, 0.5)',
-    borderBottomWidth: 1 / PixelRatio.get(),
-    justifyContent: 'space-between'
-  },
-  navBarText: {
-    fontSize: 16,
-    marginVertical: 10,
-    flex: 2,
-    textAlign: 'center'
-  },
-  navBarTitleText: {
-    color: cssVar('fbui-bluegray-60'),
-    fontWeight: '500',
-    position: 'absolute',
-    width: NavigatorNavigationBarStyles.General.ScreenWidth,
-    marginTop: 30,
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
-  },
-  navBarRightButton: {
-    paddingRight: 10,
-  },
-  navBarButtonText: {
-    color: cssVar('fbui-accent-blue'),
-  }
 });
 
 module.exports = NavigationBar;
