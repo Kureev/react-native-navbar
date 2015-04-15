@@ -1,3 +1,10 @@
+### 0.4.2
+- Fix #13
+- Navbar items now can access to `route` property of navigator's `renderScene`
+
+### 0.4.1
+- Hotfixes
+
 ### 0.4.0
 - Added `basic` and `customElements` examples
 
