@@ -29,6 +29,7 @@ var styles = StyleSheet.create({
     position: 'absolute',
     width: NavigatorNavigationBarStyles.General.ScreenWidth,
     alignItems: 'center',
+    marginTop: 30,
   },
   navBarText: {
     fontSize: 16,
