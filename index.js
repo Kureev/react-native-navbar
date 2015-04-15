@@ -138,7 +138,7 @@ var NavigationBar = React.createClass({
     if (customTitle) {
       return (
         <View style={styles.customTitle}>
-          React.addons.cloneWithProps(customTitle, { navigator, route });
+          {React.addons.cloneWithProps(customTitle, { navigator, route })}
         </View>
       );
     }
