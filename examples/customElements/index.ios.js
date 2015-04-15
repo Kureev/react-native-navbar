@@ -84,6 +84,18 @@ var Content = React.createClass({
   }
 });
 
+var titleUri = 'https://pbs.twimg.com/profile_images/2643489197/2533a80926d7c8fc8c37eaa6becffe68_normal.png';
+var CustomTitle = React.createClass({
+  render: function() {
+    return (
+      <Image
+        source={{uri: titleUri}}
+        style={{ width: 48, height: 48, alignItems: 'center' }}
+      />
+    );
+  }
+});
+
 var customElements = React.createClass({
   renderScene: function(route, navigator) {
     var Component = route.component;
@@ -112,7 +124,7 @@ var customElements = React.createClass({
         initialRoute={{
           component: Content,
           navigationBar: <NavigationBar
-            title="Custom buttons"
+            customTitle={<CustomTitle/>}
             customPrev={<CustomPrev/>}
             customNext={<CustomNext/>}
           />
