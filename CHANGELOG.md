@@ -1,5 +1,5 @@
 ### 0.4.2
-- Fix #13
+- Fix #16
 - Navbar items now can access to `route` property of navigator's `renderScene`
 
 ### 0.4.1
