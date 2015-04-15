@@ -1,4 +1,7 @@
-### 0.4.2
+### 0.4.3
+- Fix broken release
+
+### 0.4.2 [broken]
 - Fix #16
 - Navbar items now can access to `route` property of navigator's `renderScene`
 
