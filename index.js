@@ -25,6 +25,11 @@ var styles = StyleSheet.create({
     borderBottomWidth: 1 / PixelRatio.get(),
     justifyContent: 'space-between',
   },
+  customTitle: {
+    position: 'absolute',
+    width: NavigatorNavigationBarStyles.General.ScreenWidth,
+    alignItems: 'center',
+  },
   navBarText: {
     fontSize: 16,
     marginVertical: 10,
@@ -131,15 +136,25 @@ var NavigationBar = React.createClass({
      * Return `customTitle` component if we have it
      */
     if (customTitle) {
-      return React.addons.cloneWithProps(customTitle, { navigator, route });
+      return (
+        <View style={styles.customTitle}>
+          React.addons.cloneWithProps(customTitle, { navigator, route });
+        </View>
+      );
     }
 
     if (title && !title.length) {
       return true;
     }
 
+    var titleStyle = [
+      styles.navBarText,
+      styles.navBarTitleText,
+      { color: titleColor }
+    ];
+
     return (
-      <Text style={[styles.navBarText, styles.navBarTitleText, {color: titleColor}]}>
+      <Text style={titleStyle}>
         {title}
       </Text>
     );
