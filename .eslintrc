@@ -17,6 +17,7 @@
     "no-unused-vars": 0,
     "camelcase": 0,
     "no-underscore-dangle": 0,
+    "no-sequences": 0,
     "comma-dangle": "always"
   }
 }
