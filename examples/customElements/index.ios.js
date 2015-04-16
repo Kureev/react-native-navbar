@@ -102,10 +102,7 @@ var customElements = React.createClass({
     var navBar = route.navigationBar;
 
     if (navBar) {
-      navBar = React.addons.cloneWithProps(navBar, {
-        navigator: navigator,
-        route: route
-      });
+      navBar = React.addons.cloneWithProps(navBar, { navigator, route });
     }
 
     return (
