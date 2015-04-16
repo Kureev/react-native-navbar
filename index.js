@@ -57,6 +57,10 @@ var styles = StyleSheet.create({
 
 var NavigationBar = React.createClass({
 
+  propTypes: {
+    navbar: React.PropTypes.object.isRequired,
+    route: React.PropTypes.object.isRequired,
+  },
   /*
    * If there are no routes in the stack, `hidePrev` isn't provided or false,
    * and we haven't received `onPrev` click handler, return true
