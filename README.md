@@ -60,7 +60,7 @@ var ExampleProject = React.createClass({
 Also, you can take a look on [`examples`](https://github.com/Kureev/react-native-navbar/tree/master/examples) folder
 
 ### Custom elements
-In the cases when you need some *extra* customization (like replacing title by image, adding extra buttons, etc), you can use custom components.
+In the cases when you need some *extra* customization (like replacing title by image, adding extra buttons, etc), you can use custom components. Every custom component will receive `navigator` and `route` property from `renderScene` method.
 
 #### Custom buttons
 There are some cases when you need to use custom buttons and it's not hard at all:
@@ -83,9 +83,7 @@ If for some reason you want to customize a title (add image or whatever), you ca
 ```javascript
 var CustomTitle = require('./CustomTitle');
 
-var navigationBar = (
-  <NavigationBar customTitle={<CustomTitle />} />
-);
+var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 ```
 
 ### Component props
