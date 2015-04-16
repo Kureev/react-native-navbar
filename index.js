@@ -42,7 +42,7 @@ var styles = StyleSheet.create({
     fontWeight: '500',
     position: 'absolute',
     width: NavigatorNavigationBarStyles.General.ScreenWidth,
-    bottom: 5,
+    bottom: 15,
   },
   navBarLeftButton: {
     paddingLeft: 10,
