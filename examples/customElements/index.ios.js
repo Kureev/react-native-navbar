@@ -90,7 +90,7 @@ var CustomTitle = React.createClass({
     return (
       <Image
         source={{uri: titleUri}}
-        style={{ width: 48, height: 48 }}
+        style={{ width: 32, height: 32, }}
       />
     );
   }
