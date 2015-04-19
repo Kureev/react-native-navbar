@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/Kureev/react-native-navbar",
   "dependencies": {
-    "react-native": "^0.3"
+    "react-native": "^0.4"
   }
 }
