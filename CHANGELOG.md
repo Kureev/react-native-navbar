@@ -1,3 +1,13 @@
+### 0.4.6
+- Examples re-written on ECMAScript 6
+- More strict eslint config
+
+### 0.4.5
+- Update for react-native ^0.4
+
+### 0.4.4
+- Stable release for ^0.3
+
 ### 0.4.3
 - Fix broken release
 
