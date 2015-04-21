@@ -1,103 +1,108 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 var React = require('react-native');
 var NavigationBar = require('react-native-navbar');
 
 var {
   AppRegistry,
   StyleSheet,
-  Text,
   View,
   Navigator,
-  Image,
   TouchableOpacity,
 } = React;
 
 var styles = StyleSheet.create({
   navigator: {
-    flex: 1,
+    flex: 1
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  customButton: {
+    width: 24,
+    height: 24,
+    left: 10,
+    bottom: 5
+  }
 });
 
 var prevImage = 'http://cdn.flaticon.com/png/256/34097.png';
-var CustomPrev = React.createClass({
-  render: function() {
-    return (
-      <TouchableOpacity onPress={function() { alert('prev'); }}>
-        <Image
-          source={{uri: prevImage}}
-          style={{ width: 24, height: 24, left: 10, bottom: 5 }}
-        />
-      </TouchableOpacity>
-    );
-  }
-});
-
 var nextImage = 'http://cdn.flaticon.com/png/256/64410.png';
-var CustomNext = React.createClass({
-  render: function() {
+var titleUri = 'https://pbs.twimg.com/profile_images/2643489197/2533a80926d7c8fc8c37eaa6becffe68_normal.png';
+
+/**
+ * Custom `Prev` button component
+ */
+class CustomPrev extends React.Component {
+  render() {
     return (
-      <TouchableOpacity onPress={function() { alert('next'); }}>
-        <Image
-          source={{uri: nextImage}}
-          style={{ width: 24, height: 24, right: 10, bottom: 5 }}
+      <TouchableOpacity onPress={() => alert('prev') }>
+        <React.Image
+          source={{uri: prevImage}}
+          style={styles.customButton}
         />
       </TouchableOpacity>
     );
   }
-});
+}
 
-var Content = React.createClass({
-  render: function() {
+/**
+ * Custom `Next` button component
+ */
+class CustomNext extends React.Component {
+  render() {
+    return (
+      <TouchableOpacity onPress={() => alert('next') }>
+        <React.Image
+          source={{uri: nextImage}}
+          style={{width: 24, height: 24, right: 10, bottom: 5}}
+        />
+      </TouchableOpacity>
+    );
+  }
+}
+
+/**
+ * Content component
+ * Would be shown under navbar
+ */
+class Content extends React.Component {
+  render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+Control+Z for dev menu
-        </Text>
+        <React.Text style={styles.welcome}>
+          {'Welcome to React Native!'}
+        </React.Text>
       </View>
     );
   }
-});
+}
 
-var titleUri = 'https://pbs.twimg.com/profile_images/2643489197/2533a80926d7c8fc8c37eaa6becffe68_normal.png';
-var CustomTitle = React.createClass({
-  render: function() {
+/**
+ * Custom `Title` component
+ */
+class CustomTitle extends React.Component {
+  render() {
     return (
-      <Image
+      <React.Image
         source={{uri: titleUri}}
-        style={{ width: 32, height: 32, }}
+        style={{width: 32, height: 32}}
       />
     );
   }
-});
+}
 
-var customElements = React.createClass({
-  renderScene: function(route, navigator) {
+/**
+ * Main component
+ */
+class CustomElements extends React.Component {
+  renderScene(route, navigator) {
     var Component = route.component;
     var navBar = route.navigationBar;
 
@@ -111,9 +116,9 @@ var customElements = React.createClass({
         <Component navigator={navigator} route={route} />
       </View>
     );
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <Navigator
         style={styles.navigator}
@@ -129,7 +134,6 @@ var customElements = React.createClass({
       />
     );
   }
-});
+}
 
-
-AppRegistry.registerComponent('customElements', () => customElements);
+AppRegistry.registerComponent('CustomElements', () => CustomElements);

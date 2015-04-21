@@ -1,0 +1,11 @@
+[ignore]
+
+# Some modules have their own node_modules with overlap
+.*/node_modules/.*
+
+[include]
+
+[libs]
+
+[options]
+module.system=haste
