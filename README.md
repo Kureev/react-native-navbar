@@ -97,8 +97,10 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `prevTitle` (String) - Caption of the "back" button
 - `nextTitle` (String) - Caption of the "next" button
 - `customPrev` (React.Element) - React element to use instead of standart prev button
-- `customNext` (React.Element) - React element to use instead of standart next button
+- `customNext` (React.Element) - React element to use instead of standart next button 
 - `customTitle` (React.Element) - React element to use instead of standart title
+
+<b>Caution: nextTitle and customNext will take effect when you set onNext</b>
 
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)
