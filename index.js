@@ -16,7 +16,6 @@ var cssVar = require('cssVar');
 var styles = StyleSheet.create({
   navBarContainer: {
     height: NavigatorNavigationBarStyles.General.TotalNavHeight,
-    width: NavigatorNavigationBarStyles.General.ScreenWidth,
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'flex-end',
@@ -27,9 +26,10 @@ var styles = StyleSheet.create({
   },
   customTitle: {
     position: 'absolute',
-    width: NavigatorNavigationBarStyles.General.ScreenWidth,
     alignItems: 'center',
     bottom: 5,
+    left: 0,
+    right: 0,
   },
   navBarText: {
     fontSize: 16,
@@ -41,7 +41,8 @@ var styles = StyleSheet.create({
     color: cssVar('fbui-bluegray-60'),
     fontWeight: '500',
     position: 'absolute',
-    width: NavigatorNavigationBarStyles.General.ScreenWidth,
+    left: 0,
+    right: 0,
     bottom: 15,
   },
   navBarLeftButton: {
