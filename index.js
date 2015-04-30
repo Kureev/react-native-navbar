@@ -59,7 +59,7 @@ var styles = StyleSheet.create({
 var NavigationBar = React.createClass({
 
   propTypes: {
-    navbar: React.PropTypes.object.isRequired,
+    navigator: React.PropTypes.object.isRequired,
     route: React.PropTypes.object.isRequired,
   },
   /*
