@@ -211,12 +211,13 @@ var NavigationBar = React.createClass({
   },
 
   render: function() {
-    var customStyle = this.props.backgroundColor ?
-      { backgroundColor: this.props.backgroundColor } : {};
+    var backgroundStyle = this.props.backgroundColor ?
+      { backgroundColor: this.props.backgroundColor } : {},
+        customStyle = this.props.style;
 
     return (
       <StaticContainer shouldUpdate={false}>
-        <View style={[styles.navBarContainer, customStyle]}>
+        <View style={[styles.navBarContainer, backgroundStyle, customStyle ]}>
           {this.getTitleElement()}
           {this.getLeftButtonElement()}
           {this.getRightButtonElement()}
