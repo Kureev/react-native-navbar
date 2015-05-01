@@ -92,7 +92,6 @@ var NavigationBar = React.createClass({
       route,
       buttonsColor,
       customPrev,
-      backgroundColor
     } = this.props;
 
     /*
@@ -113,7 +112,7 @@ var NavigationBar = React.createClass({
     /*
      * Apply custom background styles to button
      */
-    var customStyle = backgroundColor ? { color: buttonsColor } : {};
+    var customStyle = buttonsColor ? { color: buttonsColor } : {};
 
     return (
       <TouchableOpacity onPress={onPrev || navigator.pop}>
@@ -173,7 +172,6 @@ var NavigationBar = React.createClass({
       navigator,
       route,
       buttonsColor,
-      backgroundColor,
       customNext
     } = this.props;
 
@@ -197,7 +195,7 @@ var NavigationBar = React.createClass({
     /*
      * Apply custom background styles to button
      */
-    var customStyle = backgroundColor ? { color: buttonsColor } : {};
+    var customStyle = buttonsColor ? { color: buttonsColor } : {};
 
     return (
       <TouchableOpacity onPress={onNext}>
@@ -211,12 +209,13 @@ var NavigationBar = React.createClass({
   },
 
   render: function() {
-    var customStyle = this.props.backgroundColor ?
-      { backgroundColor: this.props.backgroundColor } : {};
+    var backgroundStyle = this.props.backgroundColor ?
+      { backgroundColor: this.props.backgroundColor } : {},
+        customStyle = this.props.style;
 
     return (
       <StaticContainer shouldUpdate={false}>
-        <View style={[styles.navBarContainer, customStyle]}>
+        <View style={[styles.navBarContainer, backgroundStyle, customStyle ]}>
           {this.getTitleElement()}
           {this.getLeftButtonElement()}
           {this.getRightButtonElement()}
