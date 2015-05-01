@@ -92,7 +92,6 @@ var NavigationBar = React.createClass({
       route,
       buttonsColor,
       customPrev,
-      backgroundColor
     } = this.props;
 
     /*
@@ -113,7 +112,7 @@ var NavigationBar = React.createClass({
     /*
      * Apply custom background styles to button
      */
-    var customStyle = backgroundColor ? { color: buttonsColor } : {};
+    var customStyle = buttonsColor ? { color: buttonsColor } : {};
 
     return (
       <TouchableOpacity onPress={onPrev || navigator.pop}>
@@ -173,7 +172,6 @@ var NavigationBar = React.createClass({
       navigator,
       route,
       buttonsColor,
-      backgroundColor,
       customNext
     } = this.props;
 
@@ -197,7 +195,7 @@ var NavigationBar = React.createClass({
     /*
      * Apply custom background styles to button
      */
-    var customStyle = backgroundColor ? { color: buttonsColor } : {};
+    var customStyle = buttonsColor ? { color: buttonsColor } : {};
 
     return (
       <TouchableOpacity onPress={onNext}>
