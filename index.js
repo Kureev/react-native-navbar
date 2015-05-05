@@ -3,6 +3,7 @@
 var React = require('react-native');
 var {
   PixelRatio,
+  StatusBarIOS,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -209,6 +210,15 @@ var NavigationBar = React.createClass({
   },
 
   render: function() {
+    
+    if (this.props.statusBar == 'lightContent') {
+      StatusBarIOS.setStyle(StatusBarIOS.Style['lightContent']);
+    }
+
+    if (this.props.statusBar == 'default') {
+      StatusBarIOS.setStyle(StatusBarIOS.Style['default']);
+    }
+        
     var backgroundStyle = this.props.backgroundColor ?
       { backgroundColor: this.props.backgroundColor } : {},
         customStyle = this.props.style;
