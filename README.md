@@ -99,6 +99,7 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `customPrev` (React.Element) - React element to use instead of standart prev button
 - `customNext` (React.Element) - React element to use instead of standart next button
 - `customTitle` (React.Element) - React element to use instead of standart title
+- `statusBar` (String) - Color of the status bar (lightContent/default)
 
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)
