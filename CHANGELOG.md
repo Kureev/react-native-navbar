@@ -1,3 +1,13 @@
+### 0.5.0
+- New API to change StatusBarIOS
+
+### 0.4.8
+- Fixed console warnings
+- Using style property to customize backgroundColor
+
+### 0.4.7
+- Deprecate using `screenWidth` in react-native 0.4.1
+
 ### 0.4.6
 - Examples re-written on ECMAScript 6
 - More strict eslint config
