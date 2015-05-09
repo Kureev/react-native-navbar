@@ -218,12 +218,18 @@ var NavigationBar = React.createClass({
     }
         
     var backgroundStyle = this.props.backgroundColor ?
-      { backgroundColor: this.props.backgroundColor } : {},
-        customStyle = this.props.style;
+      { backgroundColor: this.props.backgroundColor } : {};
+        
+    /*
+     * Custom navbar border styling
+     */
+    var borderBottomStyle = this.props.borderBottomWidth ?
+      { borderBottomWidth: this.props.borderBottomWidth } : {},
+      customStyle = this.props.style;
 
     return (
       <StaticContainer shouldUpdate={false}>
-        <View style={[styles.navBarContainer, backgroundStyle, customStyle ]}>
+        <View style={[styles.navBarContainer, backgroundStyle, customStyle, borderBottomStyle]}>
           {this.getTitleElement()}
           {this.getLeftButtonElement()}
           {this.getRightButtonElement()}
