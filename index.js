@@ -22,7 +22,6 @@ var styles = StyleSheet.create({
     alignItems: 'flex-end',
     paddingBottom: 5,
     borderBottomColor: 'rgba(0, 0, 0, 0.5)',
-    borderBottomWidth: 1 / PixelRatio.get(),
     justifyContent: 'space-between',
   },
   customTitle: {
@@ -218,12 +217,18 @@ var NavigationBar = React.createClass({
     }
         
     var backgroundStyle = this.props.backgroundColor ?
-      { backgroundColor: this.props.backgroundColor } : {},
-        customStyle = this.props.style;
+      { backgroundColor: this.props.backgroundColor } : {};
+        
+    /*
+     * Custom navbar border styling
+     */
+    var borderBottomStyle = this.props.borderBottomWidth ?
+      { borderBottomWidth: this.props.borderBottomWidth } : {borderBottomWidth: 1 / PixelRatio.get()},
+      customStyle = this.props.style;
 
     return (
       <StaticContainer shouldUpdate={false}>
-        <View style={[styles.navBarContainer, backgroundStyle, customStyle ]}>
+        <View style={[styles.navBarContainer, backgroundStyle, customStyle, borderBottomStyle]}>
           {this.getTitleElement()}
           {this.getLeftButtonElement()}
           {this.getRightButtonElement()}
