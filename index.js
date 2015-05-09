@@ -22,6 +22,7 @@ var styles = StyleSheet.create({
     alignItems: 'flex-end',
     paddingBottom: 5,
     borderBottomColor: 'rgba(0, 0, 0, 0.5)',
+    borderBottomWidth: 1 / PixelRatio.get(),
     justifyContent: 'space-between',
   },
   customTitle: {
@@ -223,7 +224,7 @@ var NavigationBar = React.createClass({
      * Custom navbar border styling
      */
     var borderBottomStyle = this.props.borderBottomWidth ?
-      { borderBottomWidth: this.props.borderBottomWidth } : {borderBottomWidth: 1 / PixelRatio.get()},
+      { borderBottomWidth: this.props.borderBottomWidth } : {},
       customStyle = this.props.style;
 
     return (
