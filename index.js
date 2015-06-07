@@ -96,19 +96,19 @@ var NavigationBar = React.createClass({
     } = this.props;
 
     /*
-     * If we have a `customPrev` component, then return
-     * it's clone with additional attributes
-     */
-    if (customPrev) {
-      return React.addons.cloneWithProps(customPrev, { navigator, route });
-    }
-
-    /*
      * Check if we need to hide `prev` button
      */
     if (this.prevButtonShouldBeHidden()) {
       return <View style={styles.navBarLeftButton}></View>;
     }
+    
+    /*
+     * If we have a `customPrev` component, then return
+     * it's clone with additional attributes
+     */
+    if (customPrev) {
+      return React.addons.cloneWithProps(customPrev, { navigator, route });
+    }    
 
     /*
      * Apply custom background styles to button
