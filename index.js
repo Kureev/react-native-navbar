@@ -19,11 +19,13 @@ var styles = StyleSheet.create({
     height: NavigatorNavigationBarStyles.General.TotalNavHeight,
     backgroundColor: 'white',
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    paddingBottom: 5,
+    alignItems: 'center',
     borderBottomColor: 'rgba(0, 0, 0, 0.5)',
     borderBottomWidth: 1 / PixelRatio.get(),
     justifyContent: 'space-between',
+  },
+  navBarContainerWithStatusBar: {
+    paddingTop: NavigatorNavigationBarStyles.General.StatusBarHeight,
   },
   customTitle: {
     position: 'absolute',
@@ -34,17 +36,12 @@ var styles = StyleSheet.create({
   },
   navBarText: {
     fontSize: 16,
-    marginVertical: 10,
-    flex: 2,
+    flex: 1,
     textAlign: 'center',
   },
   navBarTitleText: {
     color: cssVar('fbui-bluegray-60'),
     fontWeight: '500',
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 15,
   },
   navBarLeftButton: {
     paddingLeft: 10,
@@ -91,8 +88,9 @@ var NavigationBar = React.createClass({
       prevTitle,
       navigator,
       route,
-      buttonsColor,
+      buttonsStyle,
       customPrev,
+      statusBar,
     } = this.props;
 
     /*
@@ -101,24 +99,19 @@ var NavigationBar = React.createClass({
     if (this.prevButtonShouldBeHidden()) {
       return <View style={styles.navBarLeftButton}></View>;
     }
-    
+
     /*
      * If we have a `customPrev` component, then return
      * it's clone with additional attributes
      */
     if (customPrev) {
       return React.addons.cloneWithProps(customPrev, { navigator, route });
-    }    
-
-    /*
-     * Apply custom background styles to button
-     */
-    var customStyle = buttonsColor ? { color: buttonsColor } : {};
+    }
 
     return (
       <TouchableOpacity onPress={onPrev || navigator.pop}>
         <View style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle]}>
+          <Text style={[styles.navBarText, styles.navBarButtonText, buttonsStyle]}>
             {prevTitle || 'Back'}
           </Text>
         </View>
@@ -132,7 +125,7 @@ var NavigationBar = React.createClass({
   getTitleElement: function() {
     var {
       title,
-      titleColor,
+      titleStyle,
       customTitle,
       navigator,
       route,
@@ -156,7 +149,7 @@ var NavigationBar = React.createClass({
     var titleStyle = [
       styles.navBarText,
       styles.navBarTitleText,
-      { color: titleColor }
+      titleStyle
     ];
 
     return (
@@ -172,7 +165,7 @@ var NavigationBar = React.createClass({
       nextTitle,
       navigator,
       route,
-      buttonsColor,
+      buttonsStyle,
       customNext
     } = this.props;
 
@@ -193,15 +186,10 @@ var NavigationBar = React.createClass({
       return <Text style={styles.navBarRightButton}></Text>;
     }
 
-    /*
-     * Apply custom background styles to button
-     */
-    var customStyle = buttonsColor ? { color: buttonsColor } : {};
-
     return (
       <TouchableOpacity onPress={onNext}>
         <View style={styles.navBarRightButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle]}>
+          <Text style={[styles.navBarText, styles.navBarButtonText, buttonsStyle]}>
             {nextTitle || 'Next'}
           </Text>
         </View>
@@ -210,22 +198,24 @@ var NavigationBar = React.createClass({
   },
 
   render: function() {
-    
+
     if (this.props.statusBar === 'lightContent') {
       StatusBarIOS.setStyle(StatusBarIOS.Style['lightContent']);
+      StatusBarIOS.setHidden(false);
     } else if (this.props.statusBar === 'default') {
       StatusBarIOS.setStyle(StatusBarIOS.Style['default']);
+      StatusBarIOS.setHidden(false);
+    } else if (this.props.statusBar === 'hidden') {
+      StatusBarIOS.setHidden(true);
     }
-        
-    var backgroundStyle = this.props.backgroundColor ?
-      { backgroundColor: this.props.backgroundColor } : {},
-        customStyle = this.props.style;
+
+    var stylePad = this.props.statusBar !== 'hidden' ? styles.navBarContainerWithStatusBar : null;
 
     return (
       <StaticContainer shouldUpdate={false}>
-        <View style={[styles.navBarContainer, backgroundStyle, customStyle ]}>
-          {this.getTitleElement()}
+        <View style={[styles.navBarContainer, this.props.style, stylePad ]}>
           {this.getLeftButtonElement()}
+          {this.getTitleElement()}
           {this.getRightButtonElement()}
         </View>
       </StaticContainer>
