@@ -27,13 +27,6 @@ var styles = StyleSheet.create({
   navBarContainerWithStatusBar: {
     paddingTop: NavigatorNavigationBarStyles.General.StatusBarHeight,
   },
-  customTitle: {
-    position: 'absolute',
-    alignItems: 'center',
-    bottom: 5,
-    left: 0,
-    right: 0,
-  },
   navBarText: {
     fontSize: 16,
     flex: 1,
@@ -97,7 +90,7 @@ var NavigationBar = React.createClass({
      * Check if we need to hide `prev` button
      */
     if (this.prevButtonShouldBeHidden()) {
-      return <View style={styles.navBarLeftButton}></View>;
+      return null;
     }
 
     /*
@@ -135,11 +128,7 @@ var NavigationBar = React.createClass({
      * Return `customTitle` component if we have it
      */
     if (customTitle) {
-      return (
-        <View style={styles.customTitle}>
-          {React.addons.cloneWithProps(customTitle, { navigator, route })}
-        </View>
-      );
+      return React.cloneElement(customTitle, { navigator, route });
     }
 
     if (title && !title.length) {
