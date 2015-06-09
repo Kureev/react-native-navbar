@@ -20,7 +20,7 @@
     "url": "https://github.com/Kureev/react-native-navbar/issues"
   },
   "homepage": "https://github.com/Kureev/react-native-navbar",
-  "dependencies": {
-    "react-native": "^0.4.1"
+  "peerDependencies": {
+    "react-native": ">=0.4.1"
   }
 }
