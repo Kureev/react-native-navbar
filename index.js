@@ -12,7 +12,6 @@ var {
 
 var NavigatorNavigationBarStyles = require('NavigatorNavigationBarStyles');
 var StaticContainer = require('StaticContainer.react');
-var cssVar = require('cssVar');
 
 var styles = StyleSheet.create({
   navBarContainer: {
@@ -39,7 +38,7 @@ var styles = StyleSheet.create({
     textAlign: 'center',
   },
   navBarTitleText: {
-    color: cssVar('fbui-bluegray-60'),
+    color: '#373e4d',
     fontWeight: '500',
     position: 'absolute',
     left: 0,
@@ -53,7 +52,7 @@ var styles = StyleSheet.create({
     paddingRight: 10,
   },
   navBarButtonText: {
-    color: cssVar('fbui-accent-blue'),
+    color: '#5890ff',
   }
 });
 
@@ -210,13 +209,13 @@ var NavigationBar = React.createClass({
   },
 
   render: function() {
-    
+
     if (this.props.statusBar === 'lightContent') {
       StatusBarIOS.setStyle(StatusBarIOS.Style['lightContent']);
     } else if (this.props.statusBar === 'default') {
       StatusBarIOS.setStyle(StatusBarIOS.Style['default']);
     }
-        
+
     var backgroundStyle = this.props.backgroundColor ?
       { backgroundColor: this.props.backgroundColor } : {},
         customStyle = this.props.style;
