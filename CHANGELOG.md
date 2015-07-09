@@ -1,3 +1,6 @@
+### 0.5.1-4
+- Upgrade code base regarding to new changes in react-native 0.6.0
+
 ### 0.5.0
 - New API to change StatusBarIOS
 
