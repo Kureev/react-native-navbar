@@ -62,6 +62,13 @@ var NavigationBar = React.createClass({
     navigator: React.PropTypes.object.isRequired,
     route: React.PropTypes.object.isRequired,
   },
+  
+  getDefaultProps: function() {
+    return {
+      shouldUpdate: false 
+    }
+  },
+  
   /*
    * If there are no routes in the stack, `hidePrev` isn't provided or false,
    * and we haven't received `onPrev` click handler, return true
@@ -221,7 +228,7 @@ var NavigationBar = React.createClass({
         customStyle = this.props.style;
 
     return (
-      <StaticContainer shouldUpdate={false}>
+      <StaticContainer shouldUpdate={this.props.shouldUpdate}>
         <View style={[styles.navBarContainer, backgroundStyle, customStyle ]}>
           {this.getTitleElement()}
           {this.getLeftButtonElement()}
