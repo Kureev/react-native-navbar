@@ -100,6 +100,7 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `customNext` (React.Element) - React element to use instead of standart next button
 - `customTitle` (React.Element) - React element to use instead of standart title
 - `statusBar` (String) - Color of the status bar (lightContent/default)
+- `shouldUpdate` (Boolean) - Whether or not the navbar will update during render. Set to true to allow for functionality such as updating the navbar title dynamically.
 
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)
