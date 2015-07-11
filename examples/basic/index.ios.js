@@ -24,6 +24,9 @@ var styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  navigator: {
+    flex: 1
+  }
 });
 
 var NavigationBar = require('react-native-navbar');
@@ -65,13 +68,13 @@ class Basic extends React.Component {
   render() {
     return (
       <Navigator
-        style={styles.navigator}
         renderScene={this.renderScene}
         initialRoute={{
           component: Example,
           navigationBar: <NavigationBar
             title="Initial View"
             onNext={this.handleNext}
+            style={styles.navigator}
           />
         }}
       />

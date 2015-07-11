@@ -29,6 +29,9 @@ var styles = StyleSheet.create({
     height: 24,
     left: 10,
     bottom: 5
+  },
+  navigator: {
+    flex: 1
   }
 });
 
@@ -121,7 +124,6 @@ class CustomElements extends React.Component {
   render() {
     return (
       <Navigator
-        style={styles.navigator}
         renderScene={this.renderScene}
         initialRoute={{
           component: Content,
@@ -129,6 +131,7 @@ class CustomElements extends React.Component {
             customTitle={<CustomTitle/>}
             customPrev={<CustomPrev/>}
             customNext={<CustomNext/>}
+            style={styles.navigator}
           />
         }}
       />
