@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A482AB33-868E-4E25-82BB-5BC706EF563B</string>
+	<string>B5C25B76-4E32-4E93-A989-AC1BAE5735C2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>customElements</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,7 +14,7 @@
 		<string>github.com:Kureev/react-native-navbar.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>examples/CustomElements/customElements.xcodeproj</string>
+	<string>examples/customElements/customElements.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B58BAE61EAE6B74B9926FFDCEC016C3CFE44ED7D</key>

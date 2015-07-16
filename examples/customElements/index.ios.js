@@ -1,6 +1,6 @@
-var React = require('react-native');
 var NavigationBar = require('react-native-navbar');
 
+var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
@@ -10,9 +10,6 @@ var {
 } = React;
 
 var styles = StyleSheet.create({
-  navigator: {
-    flex: 1
-  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -22,7 +19,8 @@ var styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10
+    margin: 10,
+    flex: 1,
   },
   customButton: {
     width: 24,
@@ -30,9 +28,6 @@ var styles = StyleSheet.create({
     left: 10,
     bottom: 5
   },
-  navigator: {
-    flex: 1
-  }
 });
 
 var prevImage = 'http://cdn.flaticon.com/png/256/34097.png';
@@ -114,7 +109,7 @@ class CustomElements extends React.Component {
     }
 
     return (
-      <View style={styles.navigator}>
+      <View style={{ flex: 1 }}>
         {navBar}
         <Component navigator={navigator} route={route} />
       </View>
@@ -130,13 +125,11 @@ class CustomElements extends React.Component {
           navigationBar: <NavigationBar
             customTitle={<CustomTitle/>}
             customPrev={<CustomPrev/>}
-            customNext={<CustomNext/>}
-            style={styles.navigator}
-          />
+            customNext={<CustomNext/>}/>
         }}
       />
     );
   }
 }
 
-AppRegistry.registerComponent('CustomElements', () => CustomElements);
+AppRegistry.registerComponent('customElements', () => CustomElements);
