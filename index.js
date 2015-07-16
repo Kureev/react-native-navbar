@@ -10,12 +10,13 @@ var {
   View
 } = React;
 
-var NavigatorNavigationBarStyles = require('NavigatorNavigationBarStyles');
-var StaticContainer = require('StaticContainer.react');
+var NAV_BAR_HEIGHT = 44;
+var STATUS_BAR_HEIGHT = 20;
+var NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
 
 var styles = StyleSheet.create({
   navBarContainer: {
-    height: NavigatorNavigationBarStyles.General.TotalNavHeight,
+    height: NAV_HEIGHT,
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'flex-end',
@@ -63,13 +64,13 @@ var NavigationBar = React.createClass({
     route: React.PropTypes.object.isRequired,
     shouldUpdate: React.PropTypes.bool
   },
-  
+
   getDefaultProps: function() {
     return {
-      shouldUpdate: false 
+      shouldUpdate: false
     }
   },
-  
+
   /*
    * If there are no routes in the stack, `hidePrev` isn't provided or false,
    * and we haven't received `onPrev` click handler, return true
@@ -229,13 +230,11 @@ var NavigationBar = React.createClass({
         customStyle = this.props.style;
 
     return (
-      <StaticContainer shouldUpdate={this.props.shouldUpdate}>
-        <View style={[styles.navBarContainer, backgroundStyle, customStyle ]}>
-          {this.getTitleElement()}
-          {this.getLeftButtonElement()}
-          {this.getRightButtonElement()}
-        </View>
-      </StaticContainer>
+      <View style={[styles.navBarContainer, backgroundStyle, customStyle ]}>
+        {this.getTitleElement()}
+        {this.getLeftButtonElement()}
+        {this.getRightButtonElement()}
+      </View>
     );
   },
 });
