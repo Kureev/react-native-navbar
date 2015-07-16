@@ -24,9 +24,6 @@ var styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-  navigator: {
-    flex: 1
-  }
 });
 
 var NavigationBar = require('react-native-navbar');
