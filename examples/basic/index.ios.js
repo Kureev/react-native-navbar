@@ -1,5 +1,5 @@
-var React = require('react-native');
-var {
+const React = require('react-native');
+const {
   AppRegistry,
   StyleSheet,
   Text,
@@ -7,7 +7,7 @@ var {
   Navigator
 } = React;
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -24,14 +24,18 @@ var styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  example: {
+    flex: 1,
+    backgroundColor: 'blue',
+  },
 });
 
-var NavigationBar = require('react-native-navbar');
+const NavigationBar = require('react-native-navbar');
 
 class Example extends React.Component {
   render() {
     return (
-      <View>
+      <View style={styles.example}>
         <Text>Some content</Text>
       </View>
     );
@@ -40,26 +44,21 @@ class Example extends React.Component {
 
 class Basic extends React.Component {
   renderScene(route, navigator) {
-    var Component = route.component;
-    var navBar = route.navigationBar;
+    const Component = route.component;
+    let navBar = route.navigationBar;
 
     if (navBar) {
       navBar = React.addons.cloneWithProps(navBar, {
-        navigator: navigator,
-        route: route
+        navigator, route,
       });
     }
 
     return (
-      <View style={styles.navigator}>
+      <View style={{ flex: 1, }}>
         {navBar}
         <Component navigator={navigator} route={route} />
       </View>
     );
-  }
-
-  handleNext() {
-    alert('Next button click handler');
   }
 
   render() {
@@ -68,11 +67,12 @@ class Basic extends React.Component {
         renderScene={this.renderScene}
         initialRoute={{
           component: Example,
-          navigationBar: <NavigationBar
-            title="Initial View"
-            onNext={this.handleNext}
-            style={styles.navigator}
-          />
+          navigationBar: (
+            <NavigationBar
+              title="Initial View"
+              onNext={() => alert('Next button click handler')}
+              style={styles.navigator}/>
+          ),
         }}
       />
     );

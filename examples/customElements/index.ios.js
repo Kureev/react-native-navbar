@@ -1,7 +1,7 @@
-var NavigationBar = require('react-native-navbar');
+const NavigationBar = require('react-native-navbar');
 
-var React = require('react-native');
-var {
+const React = require('react-native');
+const {
   AppRegistry,
   StyleSheet,
   View,
@@ -9,12 +9,12 @@ var {
   TouchableOpacity,
 } = React;
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -26,13 +26,18 @@ var styles = StyleSheet.create({
     width: 24,
     height: 24,
     left: 10,
-    bottom: 5
+    bottom: 5,
+  },
+
+  customTitle: {
+    width: 32,
+    height: 32,
   },
 });
 
-var prevImage = 'http://cdn.flaticon.com/png/256/34097.png';
-var nextImage = 'http://cdn.flaticon.com/png/256/64410.png';
-var titleUri = 'https://pbs.twimg.com/profile_images/2643489197/2533a80926d7c8fc8c37eaa6becffe68_normal.png';
+const prevImage = 'http://cdn.flaticon.com/png/256/34097.png';
+const nextImage = 'http://cdn.flaticon.com/png/256/64410.png';
+const uri = 'https://pbs.twimg.com/profile_images/2643489197/2533a80926d7c8fc8c37eaa6becffe68_normal.png';
 
 /**
  * Custom `Prev` button component
@@ -42,7 +47,7 @@ class CustomPrev extends React.Component {
     return (
       <TouchableOpacity onPress={() => alert('prev') }>
         <React.Image
-          source={{uri: prevImage}}
+          source={{ uri: prevImage, }}
           style={styles.customButton}
         />
       </TouchableOpacity>
@@ -58,8 +63,8 @@ class CustomNext extends React.Component {
     return (
       <TouchableOpacity onPress={() => alert('next') }>
         <React.Image
-          source={{uri: nextImage}}
-          style={{width: 24, height: 24, right: 10, bottom: 5}}
+          source={{ uri: nextImage, }}
+          style={styles.customButton}
         />
       </TouchableOpacity>
     );
@@ -89,8 +94,8 @@ class CustomTitle extends React.Component {
   render() {
     return (
       <React.Image
-        source={{uri: titleUri}}
-        style={{width: 32, height: 32}}
+        source={{ uri, }}
+        style={styles.customTitle}
       />
     );
   }
@@ -101,15 +106,15 @@ class CustomTitle extends React.Component {
  */
 class CustomElements extends React.Component {
   renderScene(route, navigator) {
-    var Component = route.component;
-    var navBar = route.navigationBar;
+    const Component = route.component;
+    let navBar = route.navigationBar;
 
     if (navBar) {
-      navBar = React.addons.cloneWithProps(navBar, { navigator, route });
+      navBar = React.addons.cloneWithProps(navBar, { navigator, route, });
     }
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, }}>
         {navBar}
         <Component navigator={navigator} route={route} />
       </View>
@@ -122,10 +127,12 @@ class CustomElements extends React.Component {
         renderScene={this.renderScene}
         initialRoute={{
           component: Content,
-          navigationBar: <NavigationBar
-            customTitle={<CustomTitle/>}
-            customPrev={<CustomPrev/>}
-            customNext={<CustomNext/>}/>
+          navigationBar: (
+            <NavigationBar
+              customTitle={<CustomTitle/>}
+              customPrev={<CustomPrev/>}
+              customNext={<CustomNext/>} />
+          ),
         }}
       />
     );
