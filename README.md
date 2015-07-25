@@ -91,8 +91,8 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `titleColor` (String) - Color of the navbar title (hex/rgb(a))
 - `buttonsColor` (String) - Color of the buttons
 - `backgroundColor` (String) - Color of the navbar's background
-- `onPrev` (Function) - Callback on left navbar button click
-- `onNext` (Function) - Callback on right navbar button click
+- `onPrev` (Function (navigator, route)) - Callback on left navbar button click
+- `onNext` (Function (navigator, route)) - Callback on right navbar button click
 - `hidePrev` (Boolean) - Should `prev` button be hidden or not
 - `prevTitle` (String) - Caption of the "back" button
 - `nextTitle` (String) - Caption of the "next" button
