@@ -123,8 +123,18 @@ var NavigationBar = React.createClass({
      */
     var customStyle = buttonsColor ? { color: buttonsColor } : {};
 
+    /*
+     * holds a ref to onPress which either be navigator.pop or a handler
+     */
+    var onPress = navigator.pop;
+
+    if (onPrev) {
+      //we are passing navigator and route to onPrev handler
+      onPress = () => onPrev(navigator, route);
+    }
+
     return (
-      <TouchableOpacity onPress={onPrev || navigator.pop}>
+      <TouchableOpacity onPress={onPress}>
         <View style={styles.navBarLeftButton}>
           <Text style={[styles.navBarText, styles.navBarButtonText, customStyle]}>
             {prevTitle || 'Back'}
@@ -207,7 +217,7 @@ var NavigationBar = React.createClass({
     var customStyle = buttonsColor ? { color: buttonsColor } : {};
 
     return (
-      <TouchableOpacity onPress={onNext}>
+      <TouchableOpacity onPress={() => onNext(navigator, route)}>
         <View style={styles.navBarRightButton}>
           <Text style={[styles.navBarText, styles.navBarButtonText, customStyle]}>
             {nextTitle || 'Next'}
