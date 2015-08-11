@@ -99,7 +99,7 @@ const NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customPrev) {
-      return React.addons.cloneWithProps(customPrev, { navigator, route, });
+      return React.cloneElement(customPrev, { navigator, route, });
     }
 
     /*
@@ -153,7 +153,7 @@ const NavigationBar = React.createClass({
     if (customTitle) {
       return (
         <View style={styles.customTitle}>
-          {React.addons.cloneWithProps(customTitle, { navigator, route })}
+          {React.cloneElement(customTitle, { navigator, route })}
         </View>
       );
     }
@@ -190,7 +190,7 @@ const NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customNext) {
-      return React.addons.cloneWithProps(customNext, { navigator, route, });
+      return React.cloneElement(customNext, { navigator, route, });
     }
 
     /*
