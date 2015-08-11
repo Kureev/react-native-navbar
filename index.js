@@ -60,13 +60,6 @@ const NavigationBar = React.createClass({
   propTypes: {
     navigator: React.PropTypes.object,
     route: React.PropTypes.object,
-    shouldUpdate: React.PropTypes.bool,
-  },
-
-  getDefaultProps: function() {
-    return {
-      shouldUpdate: false,
-    };
   },
 
   /*
