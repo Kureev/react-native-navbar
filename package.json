@@ -14,13 +14,13 @@
     "react-native",
     "navbar"
   ],
+  "dependencies": {
+    "react-native": ">= 0.8.0"
+  },
   "author": "Alexey Kureev <kureev-mail@ya.ru> (https://github.com/Kureev)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Kureev/react-native-navbar/issues"
   },
-  "homepage": "https://github.com/Kureev/react-native-navbar",
-  "peerDependencies": {
-    "react-native": ">= 0.6.0"
-  }
+  "homepage": "https://github.com/Kureev/react-native-navbar"
 }
