@@ -1,3 +1,6 @@
+### 0.7.1
+- Replaced `React.addons.cloneWithProps` with `React.cloneElement`
+
 ### 0.5.1-4
 - Upgrade code base regarding to new changes in react-native 0.6.0
 
