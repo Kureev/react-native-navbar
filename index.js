@@ -16,11 +16,14 @@ const styles = StyleSheet.create({
   navBarContainer: {
     height: NAV_HEIGHT,
     backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'flex-end',
     paddingBottom: 5,
     borderBottomColor: 'rgba(0, 0, 0, 0.5)',
     borderBottomWidth: 1 / PixelRatio.get(),
+  },
+  navBar: {
+    height: NAV_HEIGHT,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
     justifyContent: 'space-between',
   },
   customTitle: {
@@ -66,7 +69,7 @@ const NavigationBar = React.createClass({
    * If there are no routes in the stack, `hidePrev` isn't provided or false,
    * and we haven't received `onPrev` click handler, return true
    */
-  prevButtonShouldBeHidden: function() {
+  prevButtonShouldBeHidden() {
     const {
       onPrev,
       hidePrev,
@@ -84,7 +87,7 @@ const NavigationBar = React.createClass({
   /**
    * Describes how we get a left button in the navbar
    */
-  getLeftButtonElement: function() {
+  getLeftButtonElement() {
     const {
       onPrev,
       prevTitle,
@@ -138,7 +141,7 @@ const NavigationBar = React.createClass({
   /*
    * Describe how we get a title for the navbar
    */
-  getTitleElement: function() {
+  getTitleElement() {
     const {
       title,
       titleColor,
@@ -175,7 +178,7 @@ const NavigationBar = React.createClass({
     );
   },
 
-  getRightButtonElement: function() {
+  getRightButtonElement() {
     const {
       onNext,
       nextTitle,
@@ -218,23 +221,22 @@ const NavigationBar = React.createClass({
     );
   },
 
-  render: function() {
-
+  render() {
     if (this.props.statusBar === 'lightContent') {
       StatusBarIOS.setStyle('light-content', false);
     } else if (this.props.statusBar === 'default') {
       StatusBarIOS.setStyle('default', false);
     }
 
-    const { backgroundColor, style } = this.props;
-    const backgroundStyle = backgroundColor ?
-      { backgroundColor, } : {};
+    const { style, backgroundStyle } = this.props;
 
     return (
-      <View style={[styles.navBarContainer, backgroundStyle, style, ]}>
-        {this.getTitleElement()}
-        {this.getLeftButtonElement()}
-        {this.getRightButtonElement()}
+      <View style={[styles.navBarContainer, backgroundStyle, ]}>
+        <View style={[styles.navBar, style, ]}>
+          {this.getTitleElement()}
+          {this.getLeftButtonElement()}
+          {this.getRightButtonElement()}
+        </View>
       </View>
     );
   },

@@ -91,8 +91,9 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 ### Component props
 - `title` (String) - Title of the navbar
 - `titleColor` (String) - Color of the navbar title (hex/rgb(a))
+- `backgroundStyle` (Object) - Style that would be applied to navbar background component. Navbar container is wrapped by background container to allow customize those layers separately. In case you need to make this view transparent or change background color - this option for you
+- `style` (Object) - Style that would be applied to navbar container. That property is only about real container that wraps buttons and title
 - `buttonsColor` (String) - Color of the buttons
-- `backgroundColor` (String) - Color of the navbar's background
 - `onPrev` (Function (navigator, route)) - Callback on left navbar button click
 - `onNext` (Function (navigator, route)) - Callback on right navbar button click
 - `hidePrev` (Boolean) - Should `prev` button be hidden or not
