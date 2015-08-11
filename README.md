@@ -17,6 +17,8 @@
 npm install react-native-navbar
 ```
 
+**Warning!** From version `0.7.1` this package require `react-native` version 0.8 or higher!
+
 ### Usage example
 ```javascript
 var NavigationBar = require('react-native-navbar');
