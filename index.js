@@ -1,4 +1,5 @@
 const React = require('react-native');
+const styles = require('./styles.json');
 const {
   PixelRatio,
   StatusBarIOS,
@@ -7,56 +8,6 @@ const {
   TouchableOpacity,
   View
 } = React;
-
-const NAV_BAR_HEIGHT = 44;
-const STATUS_BAR_HEIGHT = 20;
-const NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
-
-const styles = StyleSheet.create({
-  navBarContainer: {
-    height: NAV_HEIGHT,
-    backgroundColor: 'white',
-    paddingBottom: 5,
-    borderBottomColor: 'rgba(0, 0, 0, 0.5)',
-    borderBottomWidth: 1 / PixelRatio.get(),
-  },
-  navBar: {
-    height: NAV_HEIGHT,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-  },
-  customTitle: {
-    position: 'absolute',
-    alignItems: 'center',
-    bottom: 5,
-    left: 0,
-    right: 0,
-  },
-  navBarText: {
-    fontSize: 16,
-    marginVertical: 10,
-    flex: 2,
-    textAlign: 'center',
-  },
-  navBarTitleText: {
-    color: '#373e4d',
-    fontWeight: '500',
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 15,
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
-  },
-  navBarRightButton: {
-    paddingRight: 10,
-  },
-  navBarButtonText: {
-    color: '#5890ff',
-  },
-});
 
 const NavigationBar = React.createClass({
 
@@ -120,7 +71,7 @@ const NavigationBar = React.createClass({
     /*
      * holds a ref to onPress which either be navigator.pop or a handler
      */
-    var onPress = navigator.pop;
+    let onPress = navigator.pop;
 
     if (onPrev) {
       //we are passing navigator and route to onPrev handler
@@ -156,7 +107,7 @@ const NavigationBar = React.createClass({
     if (customTitle) {
       return (
         <View style={styles.customTitle}>
-          {React.cloneElement(customTitle, { navigator, route })}
+          {React.cloneElement(customTitle, { navigator, route, })}
         </View>
       );
     }
@@ -213,7 +164,7 @@ const NavigationBar = React.createClass({
     return (
       <TouchableOpacity onPress={() => onNext(navigator, route)}>
         <View style={styles.navBarRightButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle]}>
+          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle, ]}>
             {nextTitle || 'Next'}
           </Text>
         </View>
