@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CCAAD0BC-E265-4FE6-92A8-8E237C8696A0</string>
+	<string>EA7C0F2C-6ED8-4B8A-B870-9890258E8C2A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>basic</string>
+	<string>Basic</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B58BAE61EAE6B74B9926FFDCEC016C3CFE44ED7D</key>
 		<string>github.com:Kureev/react-native-navbar.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>examples/basic/basic.xcodeproj</string>
+	<string>examples/Basic/Basic.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B58BAE61EAE6B74B9926FFDCEC016C3CFE44ED7D</key>
