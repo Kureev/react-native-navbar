@@ -1,5 +1,5 @@
 const React = require('react-native');
-const styles = require('./styles.json');
+const styles = require('./styles');
 const {
   PixelRatio,
   StatusBarIOS,
