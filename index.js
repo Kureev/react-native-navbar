@@ -174,13 +174,11 @@ const NavigationBar = React.createClass({
 
   render() {
     if (this.props.statusBar === 'lightContent') {
-      if (StatusBarIOS)
-      {
+      if (StatusBarIOS) {
         StatusBarIOS.setStyle('light-content', false);
       }
     } else if (this.props.statusBar === 'default') {
-      if (StatusBarIOS)
-      {
+      if (StatusBarIOS) {
         StatusBarIOS.setStyle('default', false);
       }
     }
