@@ -104,5 +104,21 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `customTitle` (React.Element) - React element to use instead of standart title
 - `statusBar` (String) - Color of the status bar (lightContent/default)
 
+### Usage with Webpack
+This module uses jsx syntax and requires a compiler such as [babel](https://babeljs.io/).
+React Native's packager runs this automatically but if you use Webpack be sure
+to compile this module from your dependencies
+```javascript
+loaders: [{
+  test: /\.js$/,
+   include: [
+     path.resolve(__dirname, "src"),
+     path.resolve(__dirname, "node_modules/react-native-navbar")
+   ],
+  loader: 'babel',
+  query: { stage: 0, plugins: [] }
+}]
+```
+
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)
