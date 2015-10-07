@@ -12,8 +12,12 @@ module.exports = React.StyleSheet.create({
     borderBottomColor: 'rgba(0, 0, 0, 0.5)',
     borderBottomWidth: 1 / React.PixelRatio.get(),
   },
+  statusBar: {
+    height: STATUS_BAR_HEIGHT,
+    backgroundColor: 'white'
+  },
   navBar: {
-    height: NAV_HEIGHT,
+    height: NAV_BAR_HEIGHT,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -26,8 +30,6 @@ module.exports = React.StyleSheet.create({
   },
   navBarText: {
     fontSize: 16,
-    marginVertical: 10,
-    flex: 2,
     textAlign: 'center',
   },
   navBarTitleText: {
@@ -36,15 +38,17 @@ module.exports = React.StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: 15,
+    bottom: 12,
   },
   navBarLeftButton: {
     paddingLeft: 10,
-    marginVertical: 20,
+    height: NAV_BAR_HEIGHT,
+    justifyContent: 'center'
   },
   navBarRightButton: {
-    marginVertical: 20,
     paddingRight: 10,
+    height: NAV_BAR_HEIGHT,
+    justifyContent: 'center'
   },
   navBarButtonText: {
     color: '#5890ff',

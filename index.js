@@ -179,10 +179,11 @@ const NavigationBar = React.createClass({
       StatusBarIOS.setStyle('default', false);
     }
 
-    const { style, backgroundStyle } = this.props;
+    const { style, backgroundStyle, statusBarStyle } = this.props;
 
     return (
       <View style={[styles.navBarContainer, backgroundStyle, ]}>
+        <View style={[styles.statusBar, statusBarStyle]} />
         <View style={[styles.navBar, style, ]}>
           {this.getTitleElement()}
           {this.getLeftButtonElement()}
