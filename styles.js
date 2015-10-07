@@ -13,8 +13,7 @@ module.exports = React.StyleSheet.create({
     borderBottomWidth: 1 / React.PixelRatio.get(),
   },
   statusBar: {
-    height: STATUS_BAR_HEIGHT,
-    backgroundColor: 'white'
+    height: STATUS_BAR_HEIGHT
   },
   navBar: {
     height: NAV_BAR_HEIGHT,
