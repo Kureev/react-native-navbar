@@ -98,8 +98,8 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `onPrev` (Function (navigator, route)) - Callback on left navbar button click
 - `onNext` (Function (navigator, route)) - Callback on right navbar button click
 - `hidePrev` (Boolean) - Should `prev` button be hidden or not
-- `prevTitle` (String) - Caption of the "back" button
-- `nextTitle` (String) - Caption of the "next" button
+- `prevTitle` (String) - Caption of the "back" button (requires an `onPrev` to be declared)
+- `nextTitle` (String) - Caption of the "next" button (requires an `onNext` to be declared)
 - `customPrev` (React.Element) - React element to use instead of standart prev button
 - `customNext` (React.Element) - React element to use instead of standart next button
 - `customTitle` (React.Element) - React element to use instead of standard title
