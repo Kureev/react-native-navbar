@@ -102,7 +102,7 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `nextTitle` (String) - Caption of the "next" button
 - `customPrev` (React.Element) - React element to use instead of standart prev button
 - `customNext` (React.Element) - React element to use instead of standart next button
-- `customTitle` (React.Element) - React element to use instead of standart title
+- `customTitle` (React.Element) - React element to use instead of standard title
 - `statusBar` (String) - Color of the status bar (lightContent/default)
 
 ### Usage with Webpack
