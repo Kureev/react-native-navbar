@@ -100,8 +100,8 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `hidePrev` (Boolean) - Should `prev` button be hidden or not
 - `prevTitle` (String) - Caption of the "back" button
 - `nextTitle` (String) - Caption of the "next" button
-- `customPrev` (React.Element) - React element to use instead of standart prev button
-- `customNext` (React.Element) - React element to use instead of standart next button
+- `customPrev` (React.Element) - React element to use instead of standard prev button
+- `customNext` (React.Element) - React element to use instead of standard next button
 - `customTitle` (React.Element) - React element to use instead of standard title
 - `statusBar` (String) - Color of the status bar (lightContent/default)
 
