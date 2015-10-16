@@ -1,12 +1,12 @@
 {
-  "name": "basic",
+  "name": "Basic",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "react-native": "*",
-    "react-native-navbar": "*"
+    "react-native": "^0.12.0",
+    "react-native-navbar": "^0.8.2"
   }
 }

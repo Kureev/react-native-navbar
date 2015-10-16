@@ -33,11 +33,13 @@ module.exports = React.StyleSheet.create({
   },
   navBarTitleText: {
     color: '#373e4d',
+    fontSize: 16,
     fontWeight: '500',
     position: 'absolute',
     left: 0,
     right: 0,
     bottom: 12,
+    textAlign: 'center',
   },
   navBarLeftButton: {
     paddingLeft: 10,
