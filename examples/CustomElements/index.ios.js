@@ -10,7 +10,7 @@ import NavigationBar from 'react-native-navbar';
 class CustomElements extends Component {
   render() {
     return (
-      <View style={{ flex: 1, }}>
+      <View style={{ flex: 1, backgroundColor: '#ff9900' }}>
         <NavigationBar
           title={{ title: 'Title', }}
           leftButton={{ title: 'Back', }}

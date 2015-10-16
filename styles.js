@@ -1,19 +1,16 @@
-import React from 'react-native';
-
-const NAV_BAR_HEIGHT = 44;
+const NAV_BAR_HEIGHT = 39;
 const STATUS_BAR_HEIGHT = 20;
 const NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
 
 module.exports = {
   navBarContainer: {
-    height: NAV_HEIGHT,
     backgroundColor: 'white',
     paddingBottom: 5,
-    borderBottomColor: 'rgba(0, 0, 0, 0.5)',
-    borderBottomWidth: 1 / React.PixelRatio.get(),
+    borderBottomColor: 'rgba(0, 0, 0, .5)',
+    borderBottomWidth: .5,
   },
   statusBar: {
-    height: STATUS_BAR_HEIGHT
+    height: STATUS_BAR_HEIGHT,
   },
   navBar: {
     height: NAV_BAR_HEIGHT,
@@ -22,36 +19,25 @@ module.exports = {
   },
   customTitle: {
     position: 'absolute',
-    alignItems: 'center',
-    bottom: 5,
     left: 0,
     right: 0,
+    bottom: 7,
+    alignItems: 'center',
   },
-  navBarText: {
-    fontSize: 16,
-    textAlign: 'center',
+  navBarButton: {
+    fontSize: 17,
+    letterSpacing: 0.5,
+    marginTop: 12,
   },
   navBarTitleText: {
-    color: '#373e4d',
-    fontSize: 16,
+    fontSize: 17,
+    letterSpacing: 0.5,
+    color: '#333',
     fontWeight: '500',
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: 12,
+    bottom: 7,
     textAlign: 'center',
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
-    height: NAV_BAR_HEIGHT,
-    justifyContent: 'center'
-  },
-  navBarRightButton: {
-    paddingRight: 10,
-    height: NAV_BAR_HEIGHT,
-    justifyContent: 'center'
-  },
-  navBarButtonText: {
-    color: '#5890ff',
   },
 };

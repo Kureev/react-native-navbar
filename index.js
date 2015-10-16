@@ -18,7 +18,7 @@ const ButtonShape = {
 
 const TitleShape = {
   title: PropTypes.string.isRequired,
-  handler: PropTypes.func,
+  tintColor: PropTypes.string,
 };
 
 const StatusBarShape = {
@@ -38,43 +38,55 @@ export default class NavigationBar extends Component {
     }
   }
 
-  getButtonElement(data) {
+  getButtonElement(data, style) {
     if (data._isReactElement) {
       return data;
     }
 
     return <NavbarButton
       title={data.title}
-      style={data.style}
+      style={[data.style, style, ]}
+      tintColor={data.tintColor}
       handler={data.handler} />;
   }
 
-  getTitleElement() {
-    const { title } = this.props;
-
-    if (title._isReactElement) {
-      return <View style={styles.customTitle}>{title}</View>;
+  getTitleElement(data) {
+    if (data._isReactElement) {
+      return <View style={styles.customTitle}>{data}</View>;
     }
 
-    return <Text style={styles.navBarTitleText}>{title}</Text>;
+    const colorStyle = data.tintColor ? { color: data.tintColor, } : null;
+
+    return (
+      <Text
+        style={[styles.navBarTitleText, colorStyle, ]}>
+        {data.title}
+      </Text>
+    );
   }
 
   render() {
+    const customTintColor = this.props.tintColor ?
+      { color: this.props.tintColor } : null;
+
     return (
-      <View style={[styles.navBarContainer, this.props.barTintColor, ]}>
+      <View style={[styles.navBarContainer, customTintColor, ]}>
         <View style={[styles.statusBar, ]} />
         <View style={[styles.navBar, this.props.style, ]}>
-          {this.getTitleElement()}
-          {this.getButtonElement(this.props.leftButton)}
-          {this.getButtonElement(this.props.rightButton)}
+          {this.getTitleElement(this.props.title)}
+          {this.getButtonElement(this.props.leftButton, { marginLeft: 8, })}
+          {this.getButtonElement(this.props.rightButton, { marginRight: 8, })}
         </View>
       </View>
     );
   }
 
   static propTypes = {
-    style: PropTypes.object,
-    barTintColor: PropTypes.string,
+    style: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
+    ]),
+    tintColor: PropTypes.string,
     statusBar: PropTypes.shape(StatusBarShape),
     leftButton: PropTypes.oneOfType([
       PropTypes.shape(ButtonShape),
@@ -94,6 +106,8 @@ export default class NavigationBar extends Component {
     statusBar: {
       style: 'default',
     },
-    title: '',
+    title: {
+      title: '',
+    },
   }
 }
