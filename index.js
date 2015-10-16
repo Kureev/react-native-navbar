@@ -1,22 +1,23 @@
-import React, {
+import React from 'react-native';
+const {
   PixelRatio,
   StatusBarIOS,
   Component,
   Text,
   View,
   PropTypes
-} from 'react-native';
+} = React;
 import NavbarButton from './NavbarButton';
 import styles from './styles';
 
 const ButtonShape = {
-  title: PropTypes.title.isRequired,
+  title: PropTypes.string.isRequired,
   style: PropTypes.object,
   handler: PropTypes.func,
 };
 
 const TitleShape = {
-  title: PropTypes.title.isRequired,
+  title: PropTypes.string.isRequired,
   handler: PropTypes.func,
 };
 

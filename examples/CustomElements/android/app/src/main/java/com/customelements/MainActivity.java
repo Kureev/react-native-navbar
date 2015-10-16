@@ -1,4 +1,4 @@
-package com.basic;
+package com.customelements;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
-        mReactRootView.startReactApplication(mReactInstanceManager, "Basic", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "CustomElements", null);
 
         setContentView(mReactRootView);
     }

@@ -12,7 +12,7 @@ var {
   View,
 } = React;
 
-var Basic = React.createClass({
+var CustomElements = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
@@ -49,4 +49,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('Basic', () => Basic);
+AppRegistry.registerComponent('CustomElements', () => CustomElements);
