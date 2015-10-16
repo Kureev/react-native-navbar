@@ -1,10 +1,10 @@
-const React = require('react-native');
+import React from 'react-native';
 
 const NAV_BAR_HEIGHT = 44;
 const STATUS_BAR_HEIGHT = 20;
 const NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
 
-module.exports = React.StyleSheet.create({
+module.exports = {
   navBarContainer: {
     height: NAV_HEIGHT,
     backgroundColor: 'white',
@@ -54,4 +54,4 @@ module.exports = React.StyleSheet.create({
   navBarButtonText: {
     color: '#5890ff',
   },
-});
+};

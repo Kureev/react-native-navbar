@@ -29,7 +29,7 @@ export default class NavbarButton extends Component {
 
   static defaultProps = {
     style: {},
-    margin: '0px 0px 0px 0px',
+    margin: 0,
     title: '',
     onPress: () => ({}),
   }

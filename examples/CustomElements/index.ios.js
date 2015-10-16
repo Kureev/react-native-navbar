@@ -11,6 +11,10 @@ class CustomElements extends Component {
   render() {
     return (
       <View style={{ flex: 1, }}>
+        <NavigationBar
+          title={{ title: 'Title', }}
+          leftButton={{ title: 'Back', }}
+          rightButton={{ title: 'Forward', }} />
       </View>
     );
   }

@@ -22,18 +22,19 @@ const TitleShape = {
 };
 
 const StatusBarShape = {
-  type: PropTypes.oneOf(['light-content', 'default', ]).isRequired,
+  style: PropTypes.oneOf(['light-content', 'default', ]).isRequired,
   tintColor: PropTypes.string,
 };
 
 export default class NavigationBar extends Component {
   componentDidMount() {
-    StatusBarIOS.setStyle(this.props.statusBar, false);
+    StatusBarIOS.setStyle(this.props.statusBar.style, false);
   }
 
   componentWillReceiveProps(props) {
     if (props.statusBar !== this.props.statusBar) {
-      StatusBarIOS.setStyle(this.props.statusBar, false);
+      StatusBarIOS.setStyle(this.props.statusBar.style, false);
+      this.forceUpdate();
     }
   }
 
@@ -91,7 +92,7 @@ export default class NavigationBar extends Component {
 
   static defaultProps = {
     statusBar: {
-      type: 'default',
+      style: 'default',
     },
     title: '',
   }
