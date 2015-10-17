@@ -57,7 +57,7 @@ export default class NavigationBar extends Component {
 
   getTitleElement(data) {
     if (data._isReactElement) {
-      return <View style={styles.customTitle}>{data}</View>;
+      return data;
     }
 
     const colorStyle = data.tintColor ? { color: data.tintColor, } : null;
