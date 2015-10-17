@@ -45,7 +45,7 @@ export default class NavigationBar extends Component {
 
   getButtonElement(data, style) {
     if (data._isReactElement) {
-      return data;
+      return <View style={styles.navBarButton}>{data}</View>;
     }
 
     return <NavbarButton
@@ -57,7 +57,7 @@ export default class NavigationBar extends Component {
 
   getTitleElement(data) {
     if (data._isReactElement) {
-      return data;
+      return <View style={styles.customTitle}>{data}</View>;
     }
 
     const colorStyle = data.tintColor ? { color: data.tintColor, } : null;
