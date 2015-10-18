@@ -43,7 +43,7 @@ export default class NavigationBar extends Component {
     }
   }
 
-  getButtonElement(data, style) {
+  getButtonElement(data = {}, style) {
     if (data._isReactElement) {
       return <View style={styles.navBarButton}>{data}</View>;
     }
