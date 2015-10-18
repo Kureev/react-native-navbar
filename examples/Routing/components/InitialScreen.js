@@ -6,7 +6,7 @@ const {
 import NavigationBar from 'react-native-navbar';
 import CustomScreen from './CustomScreen';
 
-export default class InitialRoute extends Component {
+export default class InitialScreen extends Component {
   render() {
     const rightButtonConfig = {
       title: 'Forward',
@@ -18,7 +18,6 @@ export default class InitialRoute extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: '#ff9900', }}>
         <NavigationBar
-          statusBar={{ hidden: true, }}
           title={{ title: 'Title', }}
           rightButton={rightButtonConfig} />
       </View>

@@ -7,7 +7,7 @@ const {
   View
 } = React;
 import NavigationBar from 'react-native-navbar';
-import InitialRoute from './components/InitialRoute';
+import InitialScreen from './components/InitialScreen';
 
 function renderScene(route, navigator) {
   return <route.component route={route} navigator={navigator} />;
@@ -16,7 +16,7 @@ function renderScene(route, navigator) {
 class Routing extends Component {
   render() {
     const initialRoute = {
-      component: InitialRoute
+      component: InitialScreen
     };
 
     return (
