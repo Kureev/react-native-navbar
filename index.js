@@ -22,25 +22,31 @@ const TitleShape = {
 };
 
 const StatusBarShape = {
-  style: PropTypes.oneOf(['light-content', 'default', ]).isRequired,
+  style: PropTypes.oneOf(['light-content', 'default', ]),
   hidden: PropTypes.bool,
   tintColor: PropTypes.string,
+  hideAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ]),
+  showAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ])
 };
+
+function customizeStatusBar(data) {
+  if (data.style) {
+    StatusBarIOS.setStyle(data.style, true);
+  }
+  const animation = data.hidden ?
+    (data.hideAnimation || NavigationBar.defaultProps.statusBar.hideAnimation) :
+    (data.showAnimation || NavigationBar.defaultProps.statusBar.showAnimation);
+
+  StatusBarIOS.setHidden(data.hidden, animation);
+}
 
 export default class NavigationBar extends Component {
   componentDidMount() {
-    if (!this.props.statusBar.hidden) {
-      StatusBarIOS.setStyle(this.props.statusBar.style, false);
-    }
+    customizeStatusBar(this.props.statusBar);
   }
 
   componentWillReceiveProps(props) {
-    if (props.statusBar !== this.props.statusBar) {
-      if (!this.props.statusBar.hidden) {
-        StatusBarIOS.setStyle(this.props.statusBar.style, false);
-      }
-      this.forceUpdate();
-    }
+    customizeStatusBar(this.props.statusBar);
   }
 
   getButtonElement(data = {}, style) {
@@ -74,9 +80,12 @@ export default class NavigationBar extends Component {
     const customTintColor = this.props.tintColor ?
       { color: this.props.tintColor } : null;
 
+    const statusBar = !this.props.statusBar.hidden ?
+      <View style={[styles.statusBar, ]} /> : null;
+
     return (
       <View style={[styles.navBarContainer, customTintColor, ]}>
-        <View style={[styles.statusBar, ]} />
+        {statusBar}
         <View style={[styles.navBar, this.props.style, ]}>
           {this.getTitleElement(this.props.title)}
           {this.getButtonElement(this.props.leftButton, { marginLeft: 8, })}
@@ -111,6 +120,8 @@ export default class NavigationBar extends Component {
     statusBar: {
       style: 'default',
       hidden: false,
+      hideAnimation: 'slide',
+      showAnimation: 'slide',
     },
     title: {
       title: '',
