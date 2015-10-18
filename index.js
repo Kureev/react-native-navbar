@@ -1,197 +1,130 @@
-const React = require('react-native');
-const styles = require('./styles');
+import React from 'react-native';
 const {
   PixelRatio,
   StatusBarIOS,
-  StyleSheet,
+  Component,
   Text,
-  TouchableOpacity,
-  View
+  View,
+  PropTypes
 } = React;
+import NavbarButton from './NavbarButton';
+import styles from './styles';
 
-const NavigationBar = React.createClass({
+const ButtonShape = {
+  title: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  handler: PropTypes.func,
+};
 
-  propTypes: {
-    navigator: React.PropTypes.object,
-    route: React.PropTypes.object,
-  },
+const TitleShape = {
+  title: PropTypes.string.isRequired,
+  tintColor: PropTypes.string,
+};
 
-  /*
-   * If there are no routes in the stack, `hidePrev` isn't provided or false,
-   * and we haven't received `onPrev` click handler, return true
-   */
-  prevButtonShouldBeHidden() {
-    const {
-      onPrev,
-      hidePrev,
-      navigator
-    } = this.props;
+const StatusBarShape = {
+  style: PropTypes.oneOf(['light-content', 'default', ]),
+  hidden: PropTypes.bool,
+  tintColor: PropTypes.string,
+  hideAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ]),
+  showAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ])
+};
 
-    const getCurrentRoutes = navigator.getCurrentRoutes;
+function customizeStatusBar(data) {
+  if (data.style) {
+    StatusBarIOS.setStyle(data.style, true);
+  }
+  const animation = data.hidden ?
+    (data.hideAnimation || NavigationBar.defaultProps.statusBar.hideAnimation) :
+    (data.showAnimation || NavigationBar.defaultProps.statusBar.showAnimation);
+
+  StatusBarIOS.setHidden(data.hidden, animation);
+}
+
+export default class NavigationBar extends Component {
+  componentDidMount() {
+    customizeStatusBar(this.props.statusBar);
+  }
+
+  componentWillReceiveProps(props) {
+    customizeStatusBar(this.props.statusBar);
+  }
+
+  getButtonElement(data = {}, style) {
+    if (data._isReactElement) {
+      return <View style={styles.navBarButton}>{data}</View>;
+    }
+
+    return <NavbarButton
+      title={data.title}
+      style={[data.style, style, ]}
+      tintColor={data.tintColor}
+      handler={data.handler} />;
+  }
+
+  getTitleElement(data) {
+    if (data._isReactElement) {
+      return <View style={styles.customTitle}>{data}</View>;
+    }
+
+    const colorStyle = data.tintColor ? { color: data.tintColor, } : null;
 
     return (
-      hidePrev ||
-      (getCurrentRoutes && getCurrentRoutes().length <= 1 && !onPrev)
-    );
-  },
-
-  /**
-   * Describes how we get a left button in the navbar
-   */
-  getLeftButtonElement() {
-    const {
-      onPrev,
-      prevTitle,
-      navigator,
-      route,
-      buttonsColor,
-      customPrev,
-    } = this.props;
-
-    /*
-     * If we have a `customPrev` component, then return
-     * it's clone with additional attributes
-     */
-    if (customPrev) {
-      return React.cloneElement(customPrev, { navigator, route, });
-    }
-
-    /*
-     * Check if we need to hide `prev` button
-     */
-    if (this.prevButtonShouldBeHidden()) {
-      return <View style={styles.navBarLeftButton}></View>;
-    }
-
-    /*
-     * Apply custom background styles to button
-     */
-    const customStyle = buttonsColor ? { color: buttonsColor, } : {};
-
-    /*
-     * holds a ref to onPress which either be navigator.pop or a handler
-     */
-    let onPress = navigator.pop;
-
-    if (onPrev) {
-      //we are passing navigator and route to onPrev handler
-      onPress = () => onPrev(navigator, route);
-    }
-
-    return (
-      <TouchableOpacity onPress={onPress}>
-        <View style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle, ]}>
-            {prevTitle || 'Back'}
-          </Text>
-        </View>
-      </TouchableOpacity>
-    );
-  },
-
-  /*
-   * Describe how we get a title for the navbar
-   */
-  getTitleElement() {
-    const {
-      title,
-      titleColor,
-      customTitle,
-      navigator,
-      route,
-    } = this.props;
-
-    /*
-     * Return `customTitle` component if we have it
-     */
-    if (customTitle) {
-      return (
-        <View style={styles.customTitle}>
-          {React.cloneElement(customTitle, { navigator, route, })}
-        </View>
-      );
-    }
-
-    if (title && !title.length) {
-      return true;
-    }
-
-    const titleStyle = [
-      styles.navBarText,
-      styles.navBarTitleText,
-      { color: titleColor, },
-    ];
-
-    return (
-      <Text style={titleStyle}>
-        {title}
+      <Text
+        style={[styles.navBarTitleText, colorStyle, ]}>
+        {data.title}
       </Text>
     );
-  },
-
-  getRightButtonElement() {
-    const {
-      onNext,
-      nextTitle,
-      navigator,
-      route,
-      buttonsColor,
-      customNext
-    } = this.props;
-
-    /*
-     * If we have a `customNext` component, then return
-     * it's clone with additional attributes
-     */
-    if (customNext) {
-      return React.cloneElement(customNext, { navigator, route, });
-    }
-
-    /*
-     * If we haven't received `onNext` handler, then just return
-     * a placeholder for button to keep markup consistant and
-     * title aligned to the center
-     */
-    if (!onNext) {
-      return <Text style={styles.navBarRightButton}></Text>;
-    }
-
-    /*
-     * Apply custom background styles to button
-     */
-    const customStyle = buttonsColor ? { color: buttonsColor, } : {};
-
-    return (
-      <TouchableOpacity onPress={() => onNext(navigator, route)}>
-        <View style={styles.navBarRightButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle, ]}>
-            {nextTitle || 'Next'}
-          </Text>
-        </View>
-      </TouchableOpacity>
-    );
-  },
+  }
 
   render() {
-    if (this.props.statusBar === 'lightContent') {
-      StatusBarIOS.setStyle('light-content', false);
-    } else if (this.props.statusBar === 'default') {
-      StatusBarIOS.setStyle('default', false);
-    }
+    const customTintColor = this.props.tintColor ?
+      { color: this.props.tintColor } : null;
 
-    const { style, backgroundStyle, statusBarStyle } = this.props;
+    const statusBar = !this.props.statusBar.hidden ?
+      <View style={[styles.statusBar, ]} /> : null;
 
     return (
-      <View style={[styles.navBarContainer, backgroundStyle, ]}>
-        <View style={[styles.statusBar, statusBarStyle]} />
-        <View style={[styles.navBar, style, ]}>
-          {this.getTitleElement()}
-          {this.getLeftButtonElement()}
-          {this.getRightButtonElement()}
+      <View style={[styles.navBarContainer, customTintColor, ]}>
+        {statusBar}
+        <View style={[styles.navBar, this.props.style, ]}>
+          {this.getTitleElement(this.props.title)}
+          {this.getButtonElement(this.props.leftButton, { marginLeft: 8, })}
+          {this.getButtonElement(this.props.rightButton, { marginRight: 8, })}
         </View>
       </View>
     );
-  },
-});
+  }
 
-module.exports = NavigationBar;
+  static propTypes = {
+    style: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
+    ]),
+    tintColor: PropTypes.string,
+    statusBar: PropTypes.shape(StatusBarShape),
+    leftButton: PropTypes.oneOfType([
+      PropTypes.shape(ButtonShape),
+      PropTypes.element,
+    ]),
+    rightButton: PropTypes.oneOfType([
+      PropTypes.shape(ButtonShape),
+      PropTypes.element,
+    ]),
+    title: PropTypes.oneOfType([
+      PropTypes.shape(TitleShape),
+      PropTypes.element,
+    ]),
+  }
+
+  static defaultProps = {
+    statusBar: {
+      style: 'default',
+      hidden: false,
+      hideAnimation: 'slide',
+      showAnimation: 'slide',
+    },
+    title: {
+      title: '',
+    },
+  }
+}

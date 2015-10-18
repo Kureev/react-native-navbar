@@ -1,112 +1,104 @@
 ## Customizable navbar for react-native
-**Attention:** this component has been designed for usage with [Navigator](http://facebook.github.io/react-native/docs/navigator.html#content).
+**Attention:** This component has been designed for *iOS platform*.
 
-![Image of Yaktocat](http://i59.tinypic.com/1051boj.png)
+![react-native-side-menu demo](https://habrastorage.org/files/1b4/9cd/9d0/1b49cd9d0d054cada8ebef5e2326e10d.png)
 
 ### Content
 - [Installation](#installation)
-- [Usage example](#usage-example)
-- [Custom elements](#custom-elements)
-  - [Custom buttons](#custom-buttons)
-  - [Custom title](#custom-title)
-- [Component props](#component-props)
+- [Examples](#examples)
+- [Getting started](#getting-started)
+- [API](#api)
+- [Usage with webpack](#usage-with-webpack)
 - [Questions?](#questions)
 
 ### Installation
 ```bash
-npm install react-native-navbar
+npm i react-native-navbar --save
 ```
 
-**Warning!** From version `0.7.1` this package require `react-native` version 0.8 or higher!
+### Examples
+- [Basic](https://github.com/Kureev/react-native-navbar/tree/master/examples/Basic)
+- [Custom Elements](https://github.com/Kureev/react-native-navbar/tree/master/examples/CustomElements)
+- [Routing](https://github.com/Kureev/react-native-navbar/tree/master/examples/Routing)
 
-### Usage example
-```javascript
+### Getting started
+*First of all, I assume you've already made a react-native project by running `react-native init project-name` and installed `react-native-navbar` component by `npm`.*
+
+In your `index.ios.js` file require `react-native-navbar` component:
+```jsx
 var NavigationBar = require('react-native-navbar');
+```
+or, if you use ES2015 syntax:
+```jsx
+import NavigationBar from 'react-native-navbar';
+```
 
-var ExampleProject = React.createClass({
-
-  renderScene: function(route, navigator) {
-    var Component = route.component;
-    var navBar = route.navigationBar;
-
-    if (navBar) {
-      navBar = React.addons.cloneWithProps(navBar, {
-        navigator: navigator,
-        route: route
-      });
+Inside your component's `render` method, use `NavigationBar`:
+```jsx
+render: function() {
+  var rightButtonConfig = {
+    title: 'Next',
+    handler: function onNext() {
+      alert('hello!');
     }
+  };
 
-    return (
-      <View style={styles.navigator}>
-        {navBar}
-        <Component navigator={navigator} route={route} />
-      </View>
-    );
-  },
+  var titleConfig = {
+    title: 'Hello, world',
+  };
 
-  render: function() {
-    return (
-      <Navigator
-        style={styles.navigator}
-        renderScene={this.renderScene}
-        initialRoute={{
-          component: InitialView,
-          navigationBar: <NavigationBar title="Initial View"/>
-        }}
-      />
-    );
-  }
-});
+  return (
+    <View style={{ flex: 1, }}>
+      <NavigationBar
+        title={titleConfig}
+        rightButton={rightButtonConfig} />
+    </View>
+  );
+}
+```
+or, if you use ES2015:
+```jsx
+render() {
+  const rightButtonConfig = {
+    title: 'Next',
+    handler: () => alert('hello!'),
+  };
+
+  const titleConfig = {
+    title: 'Hello, world',
+  };
+
+  return (
+    <View style={{ flex: 1, }}>
+      <NavigationBar
+        title={titleConfig}
+        rightButton={rightButtonConfig} />
+    </View>
+  );
+}
 ```
 
-Also, you can take a look on [`examples`](https://github.com/Kureev/react-native-navbar/tree/master/examples) folder
+That's it, you're ready to go!
 
-### Custom elements
-In the cases when you need some *extra* customization (like replacing title by image, adding extra buttons, etc), you can use custom components. Every custom component will receive `navigator` and `route` property from `renderScene` method.
-
-#### Custom buttons
-There are some cases when you need to use custom buttons and it's not hard at all:
-```javascript
-var CustomPrevButton = require('./CustomPrevButton');
-var CustomNextButton = require('./CustomNextButton');
-
-var navigationBar = (
-  <NavigationBar
-    title="Custom buttons"
-    customPrev={<CustomPrevButton/>}
-    customNext={<CustomNextButton/>}
-  />
-);
-```
-In every button you'll receive a [`navigator`](http://facebook.github.io/react-native/docs/navigator.html#navigation-methods) property.
-
-#### Custom title
-If for some reason you want to customize a title (add image or whatever), you can use `customTitle` prop:
-```javascript
-var CustomTitle = require('./CustomTitle');
-
-var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
-```
-
-### Component props
-- `title` (String) - Title of the navbar
-- `titleColor` (String) - Color of the navbar title (hex/rgb(a))
-- `backgroundStyle` (Object) - Style that would be applied to navbar background component (Status Bar + Navbar). Navbar container is wrapped by background container to allow customize those layers separately. In case you need to make this view transparent or change background color - this option for you
-- `statusBarStyle` (Object) - Style that would be applied to the Status Bar.
-- `style` (Object) - Style that would be applied to navbar container. That property is only about real container that wraps buttons and title
-- `buttonsColor` (String) - Color of the buttons
-- `onPrev` (Function (navigator, route)) - Callback on left navbar button click
-- `onNext` (Function (navigator, route)) - Callback on right navbar button click
-- `hidePrev` (Boolean) - Should `prev` button be hidden or not
-- `prevTitle` (String) - Caption of the "back" button
-- `nextTitle` (String) - Caption of the "next" button
-- `customPrev` (React.Element) - React element to use instead of standard prev button
-- `customNext` (React.Element) - React element to use instead of standard next button
-- `customTitle` (React.Element) - React element to use instead of standard title
-- `statusBar` (String) - Color of the status bar (lightContent/default)
+### API
+- **style** - (Object, Array) - Style object or array of style objects
+- **tintColor** - (String) - Navigation bar tint color
+- **statusBar** - (Object):
+  - **style** - ('light-content' or 'default') - Style of statusBar
+  - **hidden** - (Boolean)
+  - **tintColor** - (String) - Status bar tint color
+  - **hideAnimation** - ('fade', 'slide', 'none') - Type of statusBar hide animation
+  - **showAnimation** - ('fade', 'slide', 'none') - Type of statusBar show animation
+- **leftButton / rightButton** - (Object, React Element) - Either plain object with configuration, or React Element which will be used as a custom left/right button element. Configuration object has following keys:
+  - **title** - (String) - Button title
+  - **style** - (Object, Array) - Style object or array of style objects
+  - **handler** - (Function) - onPress function handler
+- **title** - (Object, React Element) - Either plain object with configuration, or React Element which will be used as a custom title element. Configuration object has following keys:
+  - **title** - (String) - Button title
+  - **tintColor** - (String) - Title tint color
 
 ### Usage with Webpack
-This module uses jsx syntax and requires a compiler such as [babel](https://babeljs.io/).
+This module uses JSX syntax and requires a compiler such as [babel](https://babeljs.io/).
 React Native's packager runs this automatically but if you use Webpack be sure
 to compile this module from your dependencies
 ```javascript
@@ -122,4 +114,8 @@ loaders: [{
 ```
 
 ### Questions?
-Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)
+Feel free to contact me via
+- [Twitter](https://twitter.com/kureevalexey)
+- Slack (@kureev on #reactiflux channel)
+
+If you want to report a bug, please [submit an issue!](https://github.com/Kureev/react-native-navbar/issues/new)
