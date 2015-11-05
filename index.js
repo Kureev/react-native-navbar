@@ -30,6 +30,10 @@ const StatusBarShape = {
 };
 
 function customizeStatusBar(data) {
+  if (!data.customizable) {
+    return;
+  }
+
   if (data.style) {
     StatusBarIOS.setStyle(data.style, true);
   }
@@ -118,6 +122,7 @@ export default class NavigationBar extends Component {
 
   static defaultProps = {
     statusBar: {
+      customizable: true,
       style: 'default',
       hidden: false,
       hideAnimation: 'slide',
