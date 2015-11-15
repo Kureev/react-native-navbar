@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "react-native": "^0.12.0",
-    "react-native-navbar": "git+https://github.com/Kureev/react-native-navbar.git#master"
+    "react-native-navbar": "git+https://github.com/react-native-fellowship/react-native-navbar.git#master"
   }
 }
