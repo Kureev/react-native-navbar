@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kureev/react-native-navbar.git"
+    "url": "git@github.com:react-native-fellowship/react-native-navbar.git"
   },
   "keywords": [
     "react-native",
@@ -20,7 +20,7 @@
   "author": "Alexey Kureev <kureev-mail@ya.ru> (https://github.com/Kureev)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Kureev/react-native-navbar/issues"
+    "url": "https://github.com/react-native-fellowship/react-native-navbar/issues"
   },
-  "homepage": "https://github.com/Kureev/react-native-navbar"
+  "homepage": "https://github.com/react-native-fellowship/react-native-navbar"
 }
