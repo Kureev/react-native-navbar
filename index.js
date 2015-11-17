@@ -25,7 +25,6 @@ const StatusBarShape = {
   style: PropTypes.oneOf(['light-content', 'default', ]),
   hidden: PropTypes.bool,
   tintColor: PropTypes.string,
-  delimiter: PropTypes.bool,
   hideAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ]),
   showAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ])
 };
@@ -81,14 +80,11 @@ export default class NavigationBar extends Component {
     const customTintColor = this.props.tintColor ?
       { backgroundColor: this.props.tintColor } : null;
 
-    const delimiter = this.props.delimiter ?
-      {borderBottomWidth: .5} : null;
-
     const statusBar = !this.props.statusBar.hidden ?
       <View style={[styles.statusBar, ]} /> : null;
 
     return (
-      <View style={[styles.navBarContainer, customTintColor, delimiter, ]}>
+      <View style={[styles.navBarContainer, customTintColor, ]}>
         {statusBar}
         <View style={[styles.navBar, this.props.style, ]}>
           {this.getTitleElement(this.props.title)}
