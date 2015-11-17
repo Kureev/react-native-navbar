@@ -6,8 +6,6 @@ module.exports = {
   navBarContainer: {
     backgroundColor: 'white',
     paddingBottom: 5,
-    borderBottomColor: 'rgba(0, 0, 0, .5)',
-    borderBottomWidth: .5,
   },
   statusBar: {
     height: STATUS_BAR_HEIGHT,
