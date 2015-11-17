@@ -81,6 +81,7 @@ That's it, you're ready to go!
 ### API
 - **style** - (Object, Array) - Style object or array of style objects
 - **tintColor** - (String) - Navigation bar tint color
+- **delimiter** - (Bool) - Navigation bar border bottom displayed
 - **statusBar** - (Object):
   - **style** - ('light-content' or 'default') - Style of statusBar
   - **hidden** - (Boolean)
