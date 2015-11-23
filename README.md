@@ -80,7 +80,7 @@ That's it, you're ready to go!
 
 ### API
 - **style** - (Object, Array) - Style object or array of style objects
-- **tintColor** - (String) - Navigation bar tint color
+- **tintColor** - (String) - NavigationBar's tint color
 - **statusBar** - (Object):
   - **style** - ('light-content' or 'default') - Style of statusBar
   - **hidden** - (Boolean)
@@ -88,12 +88,13 @@ That's it, you're ready to go!
   - **hideAnimation** - ('fade', 'slide', 'none') - Type of statusBar hide animation
   - **showAnimation** - ('fade', 'slide', 'none') - Type of statusBar show animation
 - **leftButton / rightButton** - (Object, React Element) - Either plain object with configuration, or React Element which will be used as a custom left/right button element. Configuration object has following keys:
-  - **title** - (String) - Button title
+  - **title** - (String) - Button's title
+  - **tintColor** - (String) - Button's text color
   - **style** - (Object, Array) - Style object or array of style objects
   - **handler** - (Function) - onPress function handler
 - **title** - (Object, React Element) - Either plain object with configuration, or React Element which will be used as a custom title element. Configuration object has following keys:
-  - **title** - (String) - Button title
-  - **tintColor** - (String) - Title tint color
+  - **title** - (String) - Button's title
+  - **tintColor** - (String) - Title's text color
 
 ### Usage with Webpack
 This module uses JSX syntax and requires a compiler such as [babel](https://babeljs.io/).
