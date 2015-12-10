@@ -50,7 +50,7 @@ export default class NavigationBar extends Component {
   }
 
   getButtonElement(data = {}, style) {
-    if (data._isReactElement) {
+    if (!!data.props) {
       return <View style={styles.navBarButton}>{data}</View>;
     }
 
@@ -62,7 +62,7 @@ export default class NavigationBar extends Component {
   }
 
   getTitleElement(data) {
-    if (data._isReactElement) {
+    if (!!data.props) {
       return <View style={styles.customTitle}>{data}</View>;
     }
 
