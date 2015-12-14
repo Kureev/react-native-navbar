@@ -10,6 +10,8 @@
 - [Questions?](#questions)
 
 ### Installation
+First of all, make sure you're using `npm3+` and `babel6` for version `1.1.1` or above.
+
 ```bash
 npm i react-native-navbar --save
 ```
