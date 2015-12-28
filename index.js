@@ -40,7 +40,7 @@ function customizeStatusBar(data) {
   StatusBarIOS.setHidden(data.hidden, animation);
 }
 
-export default class NavigationBar extends Component {
+class NavigationBar extends Component {
   componentDidMount() {
     customizeStatusBar(this.props.statusBar);
   }
@@ -124,3 +124,5 @@ export default class NavigationBar extends Component {
     },
   }
 }
+
+module.exports = NavigationBar;
