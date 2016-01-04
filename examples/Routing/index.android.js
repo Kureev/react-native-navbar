@@ -1,16 +1,11 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
 
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
   StyleSheet,
   Text,
   View,
-} = React;
+} from 'react-native';
 
 var Routing = React.createClass({
   render: function() {
