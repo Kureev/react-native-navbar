@@ -1,6 +1,6 @@
 {
   "name": "react-native-navbar",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Simple customizable navbar component for react-native",
   "main": "index.js",
   "scripts": {
