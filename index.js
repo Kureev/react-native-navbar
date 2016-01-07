@@ -110,7 +110,7 @@ class NavigationBar extends Component {
       PropTypes.shape(TitleShape),
       PropTypes.element,
     ]),
-  }
+  };
 
   static defaultProps = {
     statusBar: {
@@ -122,6 +122,6 @@ class NavigationBar extends Component {
     title: {
       title: '',
     },
-  }
+  };
 }
 module.exports = NavigationBar;

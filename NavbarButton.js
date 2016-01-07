@@ -29,12 +29,12 @@ export default class NavbarButton extends Component {
     tintColor: PropTypes.string,
     title: PropTypes.string,
     handler: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     style: {},
     title: '',
     tintColor: '#0076FF',
     onPress: () => ({}),
-  }
+  };
 }
