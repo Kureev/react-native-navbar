@@ -4,13 +4,12 @@
  */
 'use strict';
 
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
   StyleSheet,
   Text,
   View,
-} = React;
+} from 'react-native';
 
 var CustomElements = React.createClass({
   render: function() {
