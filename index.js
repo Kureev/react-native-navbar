@@ -12,7 +12,7 @@ import styles from './styles';
 
 const ButtonShape = {
   title: PropTypes.string.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.any,
   handler: PropTypes.func,
 };
 
