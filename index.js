@@ -7,6 +7,7 @@ const {
   View,
   PropTypes
 } = React;
+
 import NavbarButton from './NavbarButton';
 import styles from './styles';
 
@@ -41,6 +42,15 @@ function customizeStatusBar(data) {
 }
 
 export default class NavigationBar extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      isLeftHide: this.props.isLeftHide,
+      isRightHide: this.props.isRightHide
+    };
+  }
+
   componentDidMount() {
     customizeStatusBar(this.props.statusBar);
   }
@@ -83,13 +93,23 @@ export default class NavigationBar extends Component {
     const statusBar = !this.props.statusBar.hidden ?
       <View style={[styles.statusBar, ]} /> : null;
 
+    var leftButtonView;
+    if (!this.state.isLeftHide) {
+      leftButtonView = this.getButtonElement(this.props.leftButton, { marginLeft: 8, });
+    }
+
+    var rightButtonView;
+    if (!this.state.isRightHide) {
+      rightButtonView = this.getButtonElement(this.props.rightButton, { marginRight: 8, });
+    }
+
     return (
       <View style={[styles.navBarContainer, customTintColor, ]}>
         {statusBar}
         <View style={[styles.navBar, this.props.style, ]}>
           {this.getTitleElement(this.props.title)}
-          {this.getButtonElement(this.props.leftButton, { marginLeft: 8, })}
-          {this.getButtonElement(this.props.rightButton, { marginRight: 8, })}
+          {leftButtonView}
+          {rightButtonView}
         </View>
       </View>
     );
@@ -122,5 +142,8 @@ export default class NavigationBar extends Component {
     title: {
       title: '',
     },
+
+    isLeftHide: false,
+    isRightHide: false
   }
 }
