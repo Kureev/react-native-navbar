@@ -93,14 +93,14 @@ export default class NavigationBar extends Component {
     const statusBar = !this.props.statusBar.hidden ?
       <View style={[styles.statusBar, ]} /> : null;
 
-    var leftButtonView;
+    var leftButtonView = <View></View>;
     if (!this.state.isLeftHide) {
-      leftButtonView = this.getButtonElement(this.props.leftButton, { marginLeft: 8, });
+      leftButtonView = this.getButtonElement(this.props.leftButton, { left: 8, });
     }
 
-    var rightButtonView;
+    var rightButtonView = <View></View>;
     if (!this.state.isRightHide) {
-      rightButtonView = this.getButtonElement(this.props.rightButton, { marginRight: 8, });
+      rightButtonView = this.getButtonElement(this.props.rightButton, { right: 8, });
     }
 
     return (
@@ -130,7 +130,7 @@ export default class NavigationBar extends Component {
       PropTypes.shape(TitleShape),
       PropTypes.element,
     ]),
-  }
+  };
 
   static defaultProps = {
     statusBar: {
@@ -145,5 +145,5 @@ export default class NavigationBar extends Component {
 
     isLeftHide: false,
     isRightHide: false
-  }
+  };
 }
