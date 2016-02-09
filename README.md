@@ -80,6 +80,15 @@ render() {
 
 That's it, you're ready to go!
 
+#### if hide left / right button 
+```
+// set the navbar state by event
+this.setState({
+  isLeftHide: true,
+  isRightHide: true
+});
+```
+
 ### API
 - **style** - (Object, Array) - Style object or array of style objects
 - **tintColor** - (String) - NavigationBar's tint color
@@ -97,6 +106,10 @@ That's it, you're ready to go!
 - **title** - (Object, React Element) - Either plain object with configuration, or React Element which will be used as a custom title element. Configuration object has following keys:
   - **title** - (String) - Button's title
   - **tintColor** - (String) - Title's text color
+
+- **isLeftHide** - (Boolean, false) - default left button visible, if set props true can hide button, also can set state isLeftHide false/true by event
+- **isRightHide** - (Boolean, false) - default right button visible, if set props true can hide button, also can set
+state isRightHide false/true by event
 
 ### Usage with Webpack
 This module uses JSX syntax and requires a compiler such as [babel](https://babeljs.io/).
