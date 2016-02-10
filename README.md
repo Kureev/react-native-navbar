@@ -1,6 +1,8 @@
 ## Customizable navbar for react-native [iOS only]
 ![react-native-side-menu demo](https://habrastorage.org/files/1b4/9cd/9d0/1b49cd9d0d054cada8ebef5e2326e10d.png)
 
+![navbar-button-visible.gif](http://dev.cmcm.us/wikimo/navbar-button-visible.gif)
+
 ### Content
 - [Installation](#installation)
 - [Examples](#examples)
