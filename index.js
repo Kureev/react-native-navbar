@@ -83,8 +83,11 @@ class NavigationBar extends Component {
     const customTintColor = this.props.tintColor ?
       { backgroundColor: this.props.tintColor } : null;
 
+    const customStatusBarTintColor = this.props.statusBar.tintColor ?
+      { backgroundColor: this.props.statusBar.tintColor } : null;
+
     const statusBar = !this.props.statusBar.hidden ?
-      <View style={[styles.statusBar, ]} /> : null;
+      <View style={[styles.statusBar, customStatusBarTintColor ]} /> : null;
 
     return (
       <View style={[styles.navBarContainer, customTintColor, ]}>
