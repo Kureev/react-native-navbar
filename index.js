@@ -33,7 +33,7 @@ const StatusBarShape = {
 function customizeStatusBar(data) {
   if (Platform.OS === 'ios') {
     if (data.style) {
-      StatusBar.barStyle(data.style, true);
+      StatusBar.barStyle(data.style);
     }
     const animation = data.hidden ?
     (data.hideAnimation || NavigationBar.defaultProps.statusBar.hideAnimation) :
