@@ -33,13 +33,13 @@ const StatusBarShape = {
 function customizeStatusBar(data) {
   if (Platform.OS === 'ios') {
     if (data.style) {
-      StatusBar.barStyle(data.style);
+      StatusBar.barStyle = data.style;
     }
     const animation = data.hidden ?
     (data.hideAnimation || NavigationBar.defaultProps.statusBar.hideAnimation) :
     (data.showAnimation || NavigationBar.defaultProps.statusBar.showAnimation);
 
-    StatusBar.showHideTransition(animation);
+    StatusBar.showHideTransition = animation;
     StatusBar.hidden = data.hidden;
   }
 }
