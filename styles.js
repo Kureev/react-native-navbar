@@ -1,6 +1,5 @@
 const NAV_BAR_HEIGHT = 44;
 const STATUS_BAR_HEIGHT = 20;
-const NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
 
 module.exports = {
   navBarContainer: {
