@@ -22,7 +22,13 @@ module.exports = {
     bottom: 7,
     alignItems: 'center',
   },
+  navBarButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+  },
   navBarButton: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },

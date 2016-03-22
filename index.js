@@ -55,7 +55,7 @@ class NavigationBar extends Component {
 
   getButtonElement(data = {}, style) {
     return (
-      <View style={styles.navBarButton}>
+      <View style={styles.navBarButtonContainer}>
         {(!!data.props) ? data : (
           <NavbarButton
             title={data.title}
