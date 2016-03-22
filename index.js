@@ -13,6 +13,7 @@ import styles from './styles';
 
 const ButtonShape = {
   title: PropTypes.string.isRequired,
+  textFont: PropTypes.string,
   style: PropTypes.any,
   handler: PropTypes.func,
 };
@@ -20,6 +21,7 @@ const ButtonShape = {
 const TitleShape = {
   title: PropTypes.string.isRequired,
   tintColor: PropTypes.string,
+  textFont: PropTypes.string,
 };
 
 const StatusBarShape = {
@@ -60,6 +62,7 @@ class NavigationBar extends Component {
 
     return <NavbarButton
       title={data.title}
+      textFont={data.textFont}
       style={[data.style, style, ]}
       tintColor={data.tintColor}
       handler={data.handler} />;
@@ -72,9 +75,11 @@ class NavigationBar extends Component {
 
     const colorStyle = data.tintColor ? { color: data.tintColor, } : null;
 
+    const textFont = data.textFont?{ fontFamily: data.textFont, }:null;
+
     return (
       <Text
-        style={[styles.navBarTitleText, colorStyle, ]}>
+        style={[styles.navBarTitleText, colorStyle,textFont, ]}>
         {data.title}
       </Text>
     );
