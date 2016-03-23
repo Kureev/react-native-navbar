@@ -12,6 +12,7 @@ module.exports = {
     height: NAV_BAR_HEIGHT,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   customTitle: {
     position: 'absolute',
