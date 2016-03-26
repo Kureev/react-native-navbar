@@ -13,7 +13,7 @@ export default class NavbarButton extends Component {
     const { style, tintColor, margin, title, handler } = this.props;
 
     return (
-      <TouchableOpacity onPress={handler}>
+      <TouchableOpacity style={styles.navBarButton} onPress={handler}>
         <View style={style}>
           <Text style={[styles.navBarButtonText, { color: tintColor, }, ]}>{title}</Text>
         </View>

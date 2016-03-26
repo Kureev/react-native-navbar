@@ -54,15 +54,17 @@ class NavigationBar extends Component {
   }
 
   getButtonElement(data = {}, style) {
-    if (!!data.props) {
-      return <View style={styles.navBarButton}>{data}</View>;
-    }
-
-    return <NavbarButton
-      title={data.title}
-      style={[data.style, style, ]}
-      tintColor={data.tintColor}
-      handler={data.handler} />;
+    return (
+      <View style={styles.navBarButtonContainer}>
+        {(!!data.props) ? data : (
+          <NavbarButton
+            title={data.title}
+            style={[data.style, style, ]}
+            tintColor={data.tintColor}
+            handler={data.handler}/>
+        )}
+      </View>
+    );
   }
 
   getTitleElement(data) {
@@ -73,10 +75,12 @@ class NavigationBar extends Component {
     const colorStyle = data.tintColor ? { color: data.tintColor, } : null;
 
     return (
-      <Text
-        style={[styles.navBarTitleText, colorStyle, ]}>
-        {data.title}
-      </Text>
+      <View style={styles.navBarTitleContainer}>
+        <Text
+          style={[styles.navBarTitleText, colorStyle, ]}>
+          {data.title}
+        </Text>
+      </View>
     );
   }
 
