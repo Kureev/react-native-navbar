@@ -15,7 +15,7 @@
     "navbar"
   ],
   "peerDependencies": {
-    "react-native": ">= 0.16"
+    
   },
   "author": "Alexey Kureev <kureev-mail@ya.ru> (https://github.com/Kureev)",
   "license": "MIT",
