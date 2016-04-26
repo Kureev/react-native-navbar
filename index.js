@@ -40,7 +40,7 @@ function customizeStatusBar(data) {
     (data.showAnimation || NavigationBar.defaultProps.statusBar.showAnimation);
 
     StatusBar.showHideTransition = animation;
-    StatusBar.hidden = data.hidden;
+    StatusBar.setHidden(data.hidden, animation);
   }
 }
 
