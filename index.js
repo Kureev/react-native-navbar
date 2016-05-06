@@ -1,10 +1,9 @@
-import React, { Component, } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   PixelRatio,
   StatusBar,
   Text,
   View,
-  PropTypes,
   Platform
 } from 'react-native';
 
