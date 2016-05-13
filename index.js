@@ -1,13 +1,12 @@
-import React from 'react-native';
-const {
+import React, { Component, PropTypes } from 'react';
+import {
   PixelRatio,
   StatusBar,
-  Component,
   Text,
   View,
-  PropTypes,
   Platform
-} = React;
+} from 'react-native';
+
 import NavbarButton from './NavbarButton';
 import styles from './styles';
 
