@@ -49,7 +49,12 @@ class NavigationBar extends Component {
   }
 
   componentWillReceiveProps(props) {
-    customizeStatusBar(this.props.statusBar);
+    if (props.statusBar
+        && ((props.statusBar.hidden !== this.props.statusBar.hidden)
+            || (props.statusBar.style !== this.props.statusBar.style)
+            || (props.statusBar.tintColor !== this.props.statusBar.tintColor))) {
+      customizeStatusBar(this.props.statusBar);
+    }
   }
 
   getButtonElement(data = {}, style) {
