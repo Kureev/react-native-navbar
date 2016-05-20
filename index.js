@@ -24,13 +24,14 @@ const TitleShape = {
 const StatusBarShape = {
   style: PropTypes.oneOf(['light-content', 'default', ]),
   hidden: PropTypes.bool,
+  ignore: PropTypes.bool,
   tintColor: PropTypes.string,
   hideAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ]),
   showAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ])
 };
 
 function customizeStatusBar(data) {
-  if (Platform.OS === 'ios') {
+  if (Platform.OS === 'ios' && !data.ignore) {
     if (data.style) {
       StatusBar.setBarStyle(data.style);
     }
@@ -130,6 +131,7 @@ class NavigationBar extends Component {
     statusBar: {
       style: 'default',
       hidden: false,
+      ignore: false,
       hideAnimation: 'slide',
       showAnimation: 'slide',
     },
