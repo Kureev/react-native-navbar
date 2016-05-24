@@ -70,9 +70,9 @@ class NavigationBar extends Component {
 
     if (this.props.titleComponent) {
 
-      var TitleComponent = this.props.titleComponent;
+      var TitleComponent = this.props.titleComponent.component;
       return (
-        <View style={styles.navBarTitleContainer}>
+        <View style={this.props.titleComponent.style}>
           {TitleComponent}
         </View>
       );
