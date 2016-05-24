@@ -67,20 +67,33 @@ class NavigationBar extends Component {
   }
 
   getTitleElement(data) {
-    if (!!data.props) {
-      return <View style={styles.customTitle}>{data}</View>;
+
+    if (this.props.titleComponent) {
+
+      var TitleComponent = this.props.titleComponent;
+      return (
+        <View style={styles.navBarTitleContainer}>
+          {TitleComponent}
+        </View>
+      );
+
+    } else {
+      if (!!data.props) {
+        return <View style={styles.customTitle}>{data}</View>;
+      }
+
+      const colorStyle = data.tintColor ? {color: data.tintColor,} : null;
+
+      return (
+        <View style={styles.navBarTitleContainer}>
+          <Text
+            style={[styles.navBarTitleText, colorStyle, ]}>
+            {data.title}
+          </Text>
+        </View>
+      );
     }
 
-    const colorStyle = data.tintColor ? { color: data.tintColor, } : null;
-
-    return (
-      <View style={styles.navBarTitleContainer}>
-        <Text
-          style={[styles.navBarTitleText, colorStyle, ]}>
-          {data.title}
-        </Text>
-      </View>
-    );
   }
 
   render() {
@@ -124,6 +137,7 @@ class NavigationBar extends Component {
       PropTypes.shape(TitleShape),
       PropTypes.element,
     ]),
+    titleComponent: PropTypes.object,
   };
 
   static defaultProps = {
