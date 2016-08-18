@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, } from 'react';
 import {
   PixelRatio,
   StatusBar,
   Text,
   View,
-  Platform
+  Platform,
 } from 'react-native';
 
 import NavbarButton from './NavbarButton';
@@ -26,7 +26,7 @@ const StatusBarShape = {
   hidden: PropTypes.bool,
   tintColor: PropTypes.string,
   hideAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ]),
-  showAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ])
+  showAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ]),
 };
 
 function customizeStatusBar(data) {
@@ -84,26 +84,26 @@ class NavigationBar extends Component {
   }
 
   render() {
-    const customTintColor = this.props.tintColor ?
-      { backgroundColor: this.props.tintColor } : null;
+    const { containerStyle, tintColor, title, leftButton, rightButton, style, } = this.props;
+    const customTintColor = tintColor ? { backgroundColor: tintColor, } : null;
 
     const customStatusBarTintColor = this.props.statusBar.tintColor ?
-      { backgroundColor: this.props.statusBar.tintColor } : null;
+      { backgroundColor: this.props.statusBar.tintColor, } : null;
 
     let statusBar = null;
 
     if (Platform.OS === 'ios') {
       statusBar = !this.props.statusBar.hidden ?
-        <View style={[styles.statusBar, customStatusBarTintColor ]} /> : null;
+        <View style={[styles.statusBar, customStatusBarTintColor, ]} /> : null;
     }
 
     return (
-      <View style={[styles.navBarContainer, customTintColor, ]}>
+      <View style={[styles.navBarContainer, containerStyle, customTintColor, ]}>
         {statusBar}
-        <View style={[styles.navBar, this.props.style, ]}>
-          {this.getTitleElement(this.props.title)}
-          {this.getButtonElement(this.props.leftButton, { marginLeft: 8, })}
-          {this.getButtonElement(this.props.rightButton, { marginRight: 8, })}
+        <View style={[styles.navBar, style, ]}>
+          {this.getTitleElement(title)}
+          {this.getButtonElement(leftButton, { marginLeft: 8, })}
+          {this.getButtonElement(rightButton, { marginRight: 8, })}
         </View>
       </View>
     );
@@ -124,6 +124,7 @@ class NavigationBar extends Component {
       PropTypes.shape(TitleShape),
       PropTypes.element,
     ]),
+    containerStyle: PropTypes.any,
   };
 
   static defaultProps = {
@@ -136,6 +137,7 @@ class NavigationBar extends Component {
     title: {
       title: '',
     },
+    containerStyle: {},
   };
 }
 module.exports = NavigationBar;
