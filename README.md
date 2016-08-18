@@ -82,6 +82,7 @@ That's it, you're ready to go!
 
 ### API
 - **style** - (Object, Array) - Style object or array of style objects
+- **containerStyle** - (Object) - Style object for styling navbar container
 - **tintColor** - (String) - NavigationBar's tint color
 - **statusBar** - (Object):
   - **style** - ('light-content' or 'default') - Style of statusBar
