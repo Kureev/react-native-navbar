@@ -96,6 +96,7 @@ That's it, you're ready to go!
   - **handler** - (Function) - onPress function handler
 - **title** - (Object, React Element) - Either plain object with configuration, or React Element which will be used as a custom title element. Configuration object has following keys:
   - **title** - (String) - Button's title
+  - **style** - (Object, Array, Number) - Style object or array of style objects
   - **tintColor** - (String) - Title's text color
 
 ### Usage with Webpack
