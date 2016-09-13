@@ -54,7 +54,7 @@ class NavigationBar extends Component {
   }
 
   componentWillReceiveProps(props) {
-    customizeStatusBar(this.props.statusBar);
+    customizeStatusBar(props.statusBar);
   }
 
   getButtonElement(data = {}, style) {
