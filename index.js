@@ -25,21 +25,26 @@ const StatusBarShape = {
   style: PropTypes.oneOf(['light-content', 'default', ]),
   hidden: PropTypes.bool,
   tintColor: PropTypes.string,
+  animated: PropTypes.bool, // affects `style` and `hidden`
   hideAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ]),
   showAnimation: PropTypes.oneOf(['fade', 'slide', 'none', ])
 };
 
 function customizeStatusBar(data) {
   if (Platform.OS === 'ios') {
+    const animated = (data.animated || NavigationBar.defaultProps.statusBar.animated)
     if (data.style) {
-      StatusBar.setBarStyle(data.style);
+      StatusBar.setBarStyle(data.style, animated);
     }
-    const animation = data.hidden ?
-    (data.hideAnimation || NavigationBar.defaultProps.statusBar.hideAnimation) :
-    (data.showAnimation || NavigationBar.defaultProps.statusBar.showAnimation);
-
-    StatusBar.showHideTransition = animation;
-    StatusBar.hidden = data.hidden;
+    if (data.hidden !== undefined) {
+      let showHideTransition = 'none';
+      if (animated) {
+        showHideTransition = data.hidden ?
+          (data.hideAnimation || NavigationBar.defaultProps.statusBar.hideAnimation) :
+          (data.showAnimation || NavigationBar.defaultProps.statusBar.showAnimation);
+      }
+      StatusBar.setHidden(data.hidden, showHideTransition);
+    }
   }
 }
 
@@ -49,7 +54,7 @@ class NavigationBar extends Component {
   }
 
   componentWillReceiveProps(props) {
-    customizeStatusBar(this.props.statusBar);
+    customizeStatusBar(props.statusBar);
   }
 
   getButtonElement(data = {}, style) {
@@ -130,6 +135,7 @@ class NavigationBar extends Component {
     statusBar: {
       style: 'default',
       hidden: false,
+      animated: false,
       hideAnimation: 'slide',
       showAnimation: 'slide',
     },
