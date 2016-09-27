@@ -18,7 +18,7 @@ const ButtonShape = {
 
 const TitleShape = {
   title: PropTypes.string.isRequired,
-  style: PropTypes.oneOfTypes([PropTypes.object, PropTypes.array,PropTypes.number]),
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array,PropTypes.number]),
   tintColor: PropTypes.string,
 };
 
