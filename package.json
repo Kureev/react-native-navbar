@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/react-native-fellowship/react-native-navbar/issues"
   },
-  "homepage": "https://github.com/react-native-fellowship/react-native-navbar"
+  "homepage": "https://github.com/react-native-fellowship/react-native-navbar",
+  "dependencies": {
+    "styled-components": "^0.2.5"
+  }
 }

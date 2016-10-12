@@ -8,7 +8,12 @@ import {
 } from 'react-native';
 
 import NavbarButton from './NavbarButton';
+import Title from './Title';
 import styles from './styles';
+
+let NavbarContainer = styled.View`
+  background-color: #fff;
+`;
 
 const ButtonShape = {
   title: PropTypes.string.isRequired,
@@ -73,46 +78,53 @@ class NavigationBar extends Component {
   }
 
   getTitleElement(data) {
-    if (!!data.props) {
+    if (data.prototype.isReactComponent) {
       return <View style={styles.customTitle}>{data}</View>;
     }
 
-    const colorStyle = data.tintColor ? { color: data.tintColor, } : null;
-    const style = data.style ? data.style : styles.navBarTitleText;
-
-    return (
-      <View style={styles.navBarTitleContainer}>
-        <Text
-          style={[style, colorStyle, ]}>
-          {data.title}
-        </Text>
-      </View>
-    );
+    return <Title ...data />;
   }
 
   render() {
-    const customTintColor = this.props.tintColor ?
-      { backgroundColor: this.props.tintColor } : null;
-
-    const customStatusBarTintColor = this.props.statusBar.tintColor ?
-      { backgroundColor: this.props.statusBar.tintColor } : null;
+    if (this.props.tintColor) {
+      NavbarContainer = styled(Navbar)`
+        background-color: ${props => props.tintColor};
+      `;
+    }
 
     let statusBar = null;
 
     if (Platform.OS === 'ios') {
-      statusBar = !this.props.statusBar.hidden ?
-        <View style={[styles.statusBar, customStatusBarTintColor ]} /> : null;
+      if (!this.props.statusBar.hidden) {
+        statusBar = styled.View`
+          height: 20;
+        `;
+
+        if (this.props.statusBar.tintColor) {
+          statusBar = styled(statusBar)`
+            background-color: ${props => props.statusBar.tintColor};
+          `;
+        }
+      }
     }
 
+    const Navbar = styled.View`
+      height: 44;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      ${props => props.style}
+    `;
+
     return (
-      <View style={[styles.navBarContainer, customTintColor, ]}>
+      <NavbarContainer>
         {statusBar}
-        <View style={[styles.navBar, this.props.style, ]}>
+        <Navbar>
           {this.getTitleElement(this.props.title)}
           {this.getButtonElement(this.props.leftButton, { marginLeft: 8, })}
           {this.getButtonElement(this.props.rightButton, { marginRight: 8, })}
-        </View>
-      </View>
+        </Navbar>
+      </NavbarContainer>
     );
   }
 
