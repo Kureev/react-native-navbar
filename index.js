@@ -82,7 +82,7 @@ class NavigationBar extends Component {
       return <View style={styles.customTitle}>{data}</View>;
     }
 
-    return <Title ...data />;
+    return <Title title={data.title} style={data.style} />;
   }
 
   render() {

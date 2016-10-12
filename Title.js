@@ -26,7 +26,7 @@ export default function TitleComponent(props) {
   }
 
   return (
-    <TitleContainer style={props.style}>
+    <TitleContainer>
       <Title>{props.title}</Title>
     </TitleContainer>
   );
