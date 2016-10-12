@@ -1,10 +1,9 @@
-import React from 'react-native';
-const {
+import React, { Component } from 'react';
+import {
   AppRegistry,
-  Component,
   Text,
   View,
-} = React;
+} from 'react-native';
 import NavigationBar from 'react-native-navbar';
 
 class Basic extends Component {
