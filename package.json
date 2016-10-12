@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/react-native-fellowship/react-native-navbar",
   "dependencies": {
-    "styled-components": "^0.2.5"
+    "styled-components": "^0.4.0"
   }
 }
