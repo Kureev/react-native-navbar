@@ -79,7 +79,7 @@ class NavigationBar extends Component {
   }
 
   getTitleElement(data) {
-    if (data.prototype.isReactComponent) {
+    if (data.props) {
       return <View style={styles.customTitle}>{data}</View>;
     }
 
