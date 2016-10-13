@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import styled from 'styled-components/native';
 
 let TitleContainer = styled.View`
