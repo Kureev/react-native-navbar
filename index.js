@@ -10,6 +10,7 @@ import {
 import NavbarButton from './NavbarButton';
 import Title from './Title';
 import styles from './styles';
+import styled from 'styled-components/native';
 
 let NavbarContainer = styled.View`
   background-color: #fff;
