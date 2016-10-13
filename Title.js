@@ -15,7 +15,7 @@ let Title = styled.Text`
   font-size: 17;
   letter-spacing: 0.5;
   color: #333;
-  font-weight: 500;
+  font-weight: normal;
 `;
 
 export default function TitleComponent(props) {
