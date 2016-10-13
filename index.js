@@ -93,16 +93,16 @@ class NavigationBar extends Component {
       `;
     }
 
-    let statusBar = null;
+    let StatusBarContainer = null;
 
     if (Platform.OS === 'ios') {
       if (!this.props.statusBar.hidden) {
-        statusBar = styled.View`
+        StatusBarContainer = styled.View`
           height: 20;
         `;
 
         if (this.props.statusBar.tintColor) {
-          statusBar = styled(statusBar)`
+          StatusBarContainer = styled(statusBar)`
             background-color: ${props => props.statusBar.tintColor};
           `;
         }
@@ -119,7 +119,7 @@ class NavigationBar extends Component {
 
     return (
       <NavbarContainer>
-        {statusBar}
+        <StatusBarContainer />
         <Navbar>
           {this.getTitleElement(this.props.title)}
           {this.getButtonElement(this.props.leftButton, { marginLeft: 8, })}
