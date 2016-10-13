@@ -7,8 +7,8 @@ let TitleContainer = styled.View`
   right: 0;
   top: 0;
   bottom: 0;
-  justify-content: 'center';
-  align-items: 'center';
+  justify-content: center;
+  align-items: center;
 `;
 
 let Title = styled.Text`
