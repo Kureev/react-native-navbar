@@ -1,8 +1,7 @@
-import React from 'react-native';
-const {
-  Component,
+import {
   View
-} = React;
+} from 'react-native';
+import React, { Component } from 'react';
 import NavigationBar from 'react-native-navbar';
 
 export default class CustomScreen extends Component {
