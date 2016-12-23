@@ -14,6 +14,7 @@ const ButtonShape = {
   title: PropTypes.string.isRequired,
   style: PropTypes.any,
   handler: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 const TitleShape = {
@@ -66,7 +67,9 @@ class NavigationBar extends Component {
             title={data.title}
             style={[data.style, style, ]}
             tintColor={data.tintColor}
-            handler={data.handler}/>
+            handler={data.handler}
+            disabled={data.disabled} 
+          />
         )}
       </View>
     );
