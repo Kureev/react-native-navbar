@@ -1,5 +1,6 @@
 ### List of examples
-- [Basic example](https://github.com/Kureev/react-native-navbar/tree/master/examples/basic)
-- [Custom elements example](https://github.com/Kureev/react-native-navbar/tree/master/examples/customElements)
+- [Basic example](Basic)
+- [Custom elements example](CustomElements)
+- [Routing example](Routing)
 
 Feel free to request more specific examples
