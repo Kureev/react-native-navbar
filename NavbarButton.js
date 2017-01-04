@@ -9,12 +9,12 @@ import styles from './styles';
 
 export default class NavbarButton extends Component {
   render() {
-    const { style, tintColor, margin, title, handler, disabled } = this.props;
+    const { style, textStyle, tintColor, margin, title, handler, disabled } = this.props;
 
     return (
       <TouchableOpacity style={styles.navBarButton} onPress={handler} disabled={disabled}>
         <View style={style}>
-          <Text style={[styles.navBarButtonText, { color: tintColor, }, ]}>{title}</Text>
+          <Text style={[styles.navBarButtonText, { color: tintColor, }, textStyle]}>{title}</Text>
         </View>
       </TouchableOpacity>
     );
