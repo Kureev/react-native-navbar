@@ -4,7 +4,8 @@ import {
   StatusBar,
   Text,
   View,
-  Platform
+  Platform,
+  Animated
 } from 'react-native';
 
 import NavbarButton from './NavbarButton';
@@ -110,11 +111,11 @@ class NavigationBar extends Component {
     return (
       <View style={[styles.navBarContainer, customTintColor, this.props.containerStyle ]}>
         {statusBar}
-        <View style={[styles.navBar, this.props.style, ]}>
+        <Animated.View style={[styles.navBar, this.props.style, ]}>
           {this.getTitleElement(this.props.title)}
           {this.getButtonElement(this.props.leftButton, { marginLeft: 8, })}
           {this.getButtonElement(this.props.rightButton, { marginRight: 8, })}
-        </View>
+        </Animated.View>
       </View>
     );
   }
