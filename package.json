@@ -1,6 +1,6 @@
 {
   "name": "react-native-navbar",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Simple customizable navbar component for react-native",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/react-native-fellowship/react-native-navbar/issues"
   },
-  "homepage": "https://github.com/react-native-fellowship/react-native-navbar"
+  "homepage": "https://github.com/react-native-fellowship/react-native-navbar",
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.3.1"
+  }
 }
