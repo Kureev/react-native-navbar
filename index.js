@@ -11,7 +11,7 @@ import styles from './styles';
 
 const ButtonShape = {
   title: PropTypes.string.isRequired,
-  style: PropTypes.any,
+  style: View.propTypes.style,
   handler: PropTypes.func,
   disabled: PropTypes.bool,
 };
@@ -32,7 +32,7 @@ const StatusBarShape = {
 function getButtonElement(data, style) {
   return (
     <View style={styles.navBarButtonContainer}>
-      {(data.props) ? data : (
+      {(!data || data.props) ? data : (
         <NavbarButton
           title={data.title}
           style={[data.style, style]}
@@ -45,7 +45,7 @@ function getButtonElement(data, style) {
 }
 
 function getTitleElement(data) {
-  if (data.props) {
+  if (!data || data.props) {
     return <View style={styles.customTitle}>{data}</View>;
   }
 
@@ -68,14 +68,17 @@ export default class NavigationBar extends Component {
     leftButton: PropTypes.oneOfType([
       PropTypes.shape(ButtonShape),
       PropTypes.element,
+      React.PropTypes.oneOf([null]),
     ]),
     rightButton: PropTypes.oneOfType([
       PropTypes.shape(ButtonShape),
       PropTypes.element,
+      React.PropTypes.oneOf([null]),
     ]),
     title: PropTypes.oneOfType([
       PropTypes.shape(TitleShape),
       PropTypes.element,
+      React.PropTypes.oneOf([null]),
     ]),
     containerStyle: View.propTypes.style,
   };
@@ -83,16 +86,14 @@ export default class NavigationBar extends Component {
   static defaultProps = {
     style: {},
     tintColor: '',
-    leftButton: {},
-    rightButton: {},
+    leftButton: null,
+    rightButton: null,
+    title: null,
     statusBar: {
       style: 'default',
       hidden: false,
       hideAnimation: 'slide',
       showAnimation: 'slide',
-    },
-    title: {
-      title: '',
     },
     containerStyle: {},
   };
@@ -121,7 +122,14 @@ export default class NavigationBar extends Component {
   }
 
   render() {
-    const { containerStyle, tintColor, title, leftButton, rightButton, style } = this.props;
+    const {
+      containerStyle,
+      tintColor,
+      title,
+      leftButton,
+      rightButton,
+      style,
+    } = this.props;
     const customTintColor = tintColor ? { backgroundColor: tintColor } : null;
 
     const customStatusBarTintColor = this.props.statusBar.tintColor ?
