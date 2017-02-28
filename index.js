@@ -53,7 +53,7 @@ function getTitleElement(data) {
 
   return (
     <View style={styles.navBarTitleContainer}>
-      <Text style={[styles.navBarTitleText, colorStyle]}>
+      <Text style={[styles.navBarTitleText, data.style, colorStyle]}>
         {data.title}
       </Text>
     </View>
