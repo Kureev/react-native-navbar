@@ -1,6 +1,6 @@
 {
   "name": "react-native-navbar",
-  "version": "1.4.2",
+  "version": "1.6.3",
   "description": "Simple customizable navbar component for react-native",
   "main": "index.js",
   "scripts": {
@@ -8,19 +8,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:react-native-fellowship/react-native-navbar.git"
+    "url": "git@github.com:react-native-community/react-native-navbar.git"
   },
   "keywords": [
     "react-native",
     "navbar"
   ],
-  "peerDependencies": {
-    
-  },
   "author": "Alexey Kureev <kureev-mail@ya.ru> (https://github.com/Kureev)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-native-fellowship/react-native-navbar/issues"
+    "url": "https://github.com/react-native-community/react-native-navbar/issues"
   },
-  "homepage": "https://github.com/react-native-fellowship/react-native-navbar"
+  "homepage": "https://github.com/react-native-community/react-native-navbar",
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
+  }
 }

@@ -9,70 +9,51 @@
 - [Usage with webpack](#usage-with-webpack)
 - [Questions?](#questions)
 
-### Installation
-First of all, make sure you're using `npm3+` and `babel6` for version `1.1.1` or above.
-
-```bash
-npm i react-native-navbar --save
-```
-
 ### Examples
 - [Basic](https://github.com/Kureev/react-native-navbar/tree/master/examples/Basic)
 - [Custom Elements](https://github.com/Kureev/react-native-navbar/tree/master/examples/CustomElements)
 - [Routing](https://github.com/Kureev/react-native-navbar/tree/master/examples/Routing)
 
 ### Getting started
-*First of all, I assume you've already made a react-native project by running `react-native init project-name` and installed `react-native-navbar` component by `npm`.*
+- Install `react-native-navbar`:
+  - By using `yarn`:
+    ```
+    $ yarn add react-native-navbar
+    ```
+  - By using `npm`:
+    ```
+    $ npm install react-native-navbar --save
+    ```
 
-In your `index.ios.js` file require `react-native-navbar` component:
+- Import it in the file where you want to use it:
+  ```jsx
+  import NavigationBar from 'react-native-navbar';
+  ```
+
+- Add it to your React element tree:
 ```jsx
-var NavigationBar = require('react-native-navbar');
-```
-or, if you use ES2015 syntax:
-```jsx
-import NavigationBar from 'react-native-navbar';
-```
+const styles = {
+  container: {
+    flex: 1,
+  },
+};
 
-Inside your component's `render` method, use `NavigationBar`:
-```jsx
-render: function() {
-  var rightButtonConfig = {
-    title: 'Next',
-    handler: function onNext() {
-      alert('hello!');
-    }
-  };
+const rightButtonConfig = {
+  title: 'Next',
+  handler: () => alert('hello!'),
+};
 
-  var titleConfig = {
-    title: 'Hello, world',
-  };
+const titleConfig = {
+  title: 'Hello, world',
+};
 
+function ComponentWithNavigationBar() {
   return (
-    <View style={{ flex: 1, }}>
+    <View style={styles.container}>
       <NavigationBar
         title={titleConfig}
-        rightButton={rightButtonConfig} />
-    </View>
-  );
-}
-```
-or, if you use ES2015:
-```jsx
-render() {
-  const rightButtonConfig = {
-    title: 'Next',
-    handler: () => alert('hello!'),
-  };
-
-  const titleConfig = {
-    title: 'Hello, world',
-  };
-
-  return (
-    <View style={{ flex: 1, }}>
-      <NavigationBar
-        title={titleConfig}
-        rightButton={rightButtonConfig} />
+        rightButton={rightButtonConfig}
+      />
     </View>
   );
 }
@@ -82,6 +63,7 @@ That's it, you're ready to go!
 
 ### API
 - **style** - (Object, Array) - Style object or array of style objects
+- **containerStyle** - (Object) - Style object for styling navbar container
 - **tintColor** - (String) - NavigationBar's tint color
 - **statusBar** - (Object):
   - **style** - ('light-content' or 'default') - Style of statusBar
@@ -94,8 +76,10 @@ That's it, you're ready to go!
   - **tintColor** - (String) - Button's text color
   - **style** - (Object, Array) - Style object or array of style objects
   - **handler** - (Function) - onPress function handler
+  - **disabled** - (Boolean) - If true, disable interactions for this button.
 - **title** - (Object, React Element) - Either plain object with configuration, or React Element which will be used as a custom title element. Configuration object has following keys:
   - **title** - (String) - Button's title
+  - **style** - (Object, Array, Number) - Style object or array of style objects
   - **tintColor** - (String) - Title's text color
 
 ### Usage with Webpack
@@ -115,8 +99,5 @@ loaders: [{
 ```
 
 ### Questions?
-Feel free to contact me via
-- [Twitter](https://twitter.com/kureevalexey)
-- Slack (@kureev on #reactiflux channel)
-
-If you want to report a bug, please [submit an issue!](https://github.com/Kureev/react-native-navbar/issues/new)
+Feel free to ping me on [twitter](https://twitter.com/kureevalexey)
+If you want to report a bug, please [submit an issue!](https://github.com/react-native-community/react-native-navbar/issues/new)
