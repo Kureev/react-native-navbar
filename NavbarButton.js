@@ -15,6 +15,8 @@ export default function NavbarButton(props) {
       style={styles.navBarButton}
       onPress={handler}
       disabled={disabled}
+      accessible={accessible}
+      accessibilityLabel={accessibilityLabel}
     >
       <View style={style}>
         <Text style={[styles.navBarButtonText, { color: tintColor }]}>{title}</Text>
@@ -32,6 +34,8 @@ NavbarButton.propTypes = {
   title: PropTypes.string,
   handler: PropTypes.func,
   disabled: PropTypes.bool,
+  accessible: PropTypes.bool,
+  accessibilityLabel: PropTypes.string,
 };
 
 NavbarButton.defaultProps = {
