@@ -8,7 +8,7 @@ import {
 import styles from './styles';
 
 export default function NavbarButton(props) {
-  const { style, tintColor, title, handler, disabled } = props;
+  const { style, tintColor, title, handler, disabled, accessible, accessibilityLabel } = props;
 
   return (
     <TouchableOpacity
