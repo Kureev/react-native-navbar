@@ -62,7 +62,7 @@ function getTitleElement(data) {
   );
 }
 
-export default class NavigationBar extends Component {
+class NavigationBar extends Component {
   static propTypes = {
     style: View.propTypes.style,
     tintColor: PropTypes.string,
@@ -156,3 +156,4 @@ export default class NavigationBar extends Component {
     );
   }
 }
+module.exports = NavigationBar;
