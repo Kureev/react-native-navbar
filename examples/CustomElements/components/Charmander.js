@@ -9,6 +9,11 @@ export default class Left extends Component {
   render() {
     const charmander = 'http://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-blue-version/d/d4/Charmander.gif';
     return (
+      /* ---------------------------------------------------------
+      *
+      * Add Action when click image then direct to url : charmander
+      *
+      * --------------------------------------------------------- */
       <TouchableOpacity onPress={this.props.onPress}>
         <Image
           source={{ uri: charmander }}
