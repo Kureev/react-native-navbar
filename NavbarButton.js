@@ -15,8 +15,15 @@ export default function NavbarButton(props) {
     handler,
     disabled,
     accessible,
-    accessibilityLabel
+    accessibilityLabel,
+    fontFamily
   } = props;
+
+  let textStyles = [styles.navBarButtonText, { color: tintColor }];
+
+  if (fontFamily) {
+    textStyles.push({fontFamily: fontFamily});
+  }
 
   return (
     <TouchableOpacity
@@ -24,10 +31,9 @@ export default function NavbarButton(props) {
       onPress={handler}
       disabled={disabled}
       accessible={accessible}
-      accessibilityLabel={accessibilityLabel}
-    >
+      accessibilityLabel={accessibilityLabel}>
       <View style={style}>
-        <Text style={[styles.navBarButtonText, { color: tintColor }]}>{title}</Text>
+        <Text style={textStyles}>{title}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -44,6 +50,7 @@ NavbarButton.propTypes = {
   disabled: PropTypes.bool,
   accessible: PropTypes.bool,
   accessibilityLabel: PropTypes.string,
+  fontFamily: PropTypes.string
 };
 
 NavbarButton.defaultProps = {
