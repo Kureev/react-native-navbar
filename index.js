@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   StatusBar,
   Text,
   View,
   Platform,
 } from 'react-native';
+import PropTypes from 'prop-types'
 
 import NavbarButton from './NavbarButton';
 import styles from './styles';
@@ -70,17 +71,17 @@ export default class NavigationBar extends Component {
     leftButton: PropTypes.oneOfType([
       PropTypes.shape(ButtonShape),
       PropTypes.element,
-      React.PropTypes.oneOf([null]),
+      PropTypes.oneOf([null]),
     ]),
     rightButton: PropTypes.oneOfType([
       PropTypes.shape(ButtonShape),
       PropTypes.element,
-      React.PropTypes.oneOf([null]),
+      PropTypes.oneOf([null]),
     ]),
     title: PropTypes.oneOfType([
       PropTypes.shape(TitleShape),
       PropTypes.element,
-      React.PropTypes.oneOf([null]),
+      PropTypes.oneOf([null]),
     ]),
     containerStyle: View.propTypes.style,
   };
