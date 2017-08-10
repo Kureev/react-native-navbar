@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Platform,
+  ViewPropTypes,
 } from 'react-native';
 import PropTypes from 'prop-types'
 
@@ -12,7 +13,7 @@ import styles from './styles';
 
 const ButtonShape = {
   title: PropTypes.string.isRequired,
-  style: View.propTypes.style,
+  style: ViewPropTypes.style,
   handler: PropTypes.func,
   disabled: PropTypes.bool,
 };
@@ -83,7 +84,7 @@ export default class NavigationBar extends Component {
       PropTypes.element,
       PropTypes.oneOf([null]),
     ]),
-    containerStyle: View.propTypes.style,
+    containerStyle: ViewPropTypes.style,
   };
 
   static defaultProps = {
