@@ -66,7 +66,7 @@ function getTitleElement(data) {
 
 export default class NavigationBar extends Component {
   static propTypes = {
-    style: View.propTypes.style,
+    style: ViewPropTypes.style,
     tintColor: PropTypes.string,
     statusBar: PropTypes.shape(StatusBarShape),
     leftButton: PropTypes.oneOfType([
