@@ -4,9 +4,9 @@ import {
   Text,
   View,
   Platform,
-  ViewPropTypes,
 } from 'react-native';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import ViewPropTypes from './lib';
 
 import NavbarButton from './NavbarButton';
 import styles from './styles';
@@ -66,7 +66,7 @@ function getTitleElement(data) {
 
 export default class NavigationBar extends Component {
   static propTypes = {
-    style: View.propTypes.style,
+    style: ViewPropTypes.style,
     tintColor: PropTypes.string,
     statusBar: PropTypes.shape(StatusBarShape),
     leftButton: PropTypes.oneOfType([
