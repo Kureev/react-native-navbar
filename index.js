@@ -21,6 +21,8 @@ const ButtonShape = {
 const TitleShape = {
   title: PropTypes.string.isRequired,
   tintColor: PropTypes.string,
+  ellipsizeMode: PropTypes.string,
+  numberOfLines: PropTypes.number
 };
 
 const StatusBarShape = {
@@ -57,7 +59,7 @@ function getTitleElement(data) {
 
   return (
     <View style={styles.navBarTitleContainer}>
-      <Text style={[styles.navBarTitleText, data.style, colorStyle]}>
+      <Text ellipsizeMode={data.ellipsizeMode} numberOfLines={data.numberOfLines} style={[styles.navBarTitleText, data.style, colorStyle]}>
         {data.title}
       </Text>
     </View>

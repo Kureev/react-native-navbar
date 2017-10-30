@@ -83,6 +83,8 @@ That's it, you're ready to go!
   - **title** - (String) - Button's title
   - **style** - (Object, Array, Number) - Style object or array of style objects
   - **tintColor** - (String) - Title's text color
+  - **ellipsizeMode** - ('head', 'middle', 'tail', 'clip') - How to [display](https://facebook.github.io/react-native/docs/text.html#ellipsizemode) the text
+  - **numberOfLines** - (Number) - How to [truncate](https://facebook.github.io/react-native/docs/text.html#numberoflines) the text
 
 ### Usage with Webpack
 This module uses JSX syntax and requires a compiler such as [babel](https://babeljs.io/).
