@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Platform,
+  Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import ViewPropTypes from './lib';
@@ -47,6 +48,16 @@ function getButtonElement(data, style) {
         />
       )}
     </View>
+  );
+}
+
+function isIphoneX() {
+  let dimen = Dimensions.get('window');
+  return (
+    Platform.OS === 'ios' &&
+    !Platform.isPad &&
+    !Platform.isTVOS &&
+    (dimen.height === 812 || dimen.width === 812)
   );
 }
 
@@ -148,8 +159,12 @@ export default class NavigationBar extends Component {
         <View style={[styles.statusBar, customStatusBarTintColor]} /> : null;
     }
 
+    const iPhoneXPadding = {
+      paddingTop: (isIphoneX()) ? 20 : 0,
+    };
+
     return (
-      <View style={[styles.navBarContainer, containerStyle, customTintColor]}>
+      <View style={[styles.navBarContainer, containerStyle, customTintColor, iPhoneXPadding]}>
         {statusBar}
         <View style={[styles.navBar, style]}>
           {getTitleElement(title)}
