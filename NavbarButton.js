@@ -26,6 +26,7 @@ export default function NavbarButton(props) {
       disabled={disabled}
       accessible={accessible}
       accessibilityLabel={accessibilityLabel}
+      style={disabled ? { opacity: 0.4 } : {}}
     >
       <View style={style}>
         <Text style={[styles.navBarButtonText, { color: tintColor }]}>{title}</Text>
