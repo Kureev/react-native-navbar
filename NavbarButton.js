@@ -18,6 +18,7 @@ export default function NavbarButton(props) {
     accessible,
     accessibilityLabel
   } = props;
+  const disabledStyle = disabled ? { opacity: 0.6 } : {};
 
   return (
     <TouchableOpacity
@@ -26,10 +27,9 @@ export default function NavbarButton(props) {
       disabled={disabled}
       accessible={accessible}
       accessibilityLabel={accessibilityLabel}
-      style={disabled ? { opacity: 0.4 } : {}}
     >
       <View style={style}>
-        <Text style={[styles.navBarButtonText, { color: tintColor }]}>{title}</Text>
+        <Text style={[styles.navBarButtonText, { color: tintColor }, disabledStyle]}>{title}</Text>
       </View>
     </TouchableOpacity>
   );
