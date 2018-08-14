@@ -42,6 +42,7 @@ function getButtonElement(data, style) {
           style={[data.style, style]}
           tintColor={data.tintColor}
           handler={data.handler}
+          disabled={data.disabled}
           accessible={data.accessible}
           accessibilityLabel={data.accessibilityLabel}
         />
