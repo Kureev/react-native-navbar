@@ -71,6 +71,7 @@ That's it, you're ready to go!
   - **tintColor** - (String) - Status bar tint color
   - **hideAnimation** - ('fade', 'slide', 'none') - Type of statusBar hide animation
   - **showAnimation** - ('fade', 'slide', 'none') - Type of statusBar show animation
+  - **iOSHeight** - (Boolean)
 - **leftButton / rightButton** - (Object, React Element) - Either plain object with configuration, or React Element which will be used as a custom left/right button element. Configuration object has following keys:
   - **title** - (String) - Button's title
   - **tintColor** - (String) - Button's text color
