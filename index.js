@@ -44,6 +44,7 @@ function getButtonElement(data, style) {
           handler={data.handler}
           accessible={data.accessible}
           accessibilityLabel={data.accessibilityLabel}
+          fontFamily={data.fontFamily}
         />
       )}
     </View>
