@@ -9,6 +9,11 @@ export default class Bulbazavr extends Component {
   render() {
     const bulbazavr = 'http://1.bp.blogspot.com/_rwVhHPI9dhQ/SPeGpxeQiCI/AAAAAAAAAoM/pyVMkLNJfY8/s400/002.gif';
     return (
+      /* ---------------------------------------------------------
+      *
+      * Add Action when click image then direct to url : bulbazavr
+      *
+      * --------------------------------------------------------- */
       <TouchableOpacity onPress={this.props.onPress}>
         <Image
           source={{ uri: bulbazavr }}
