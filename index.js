@@ -42,6 +42,7 @@ function getButtonElement(data, style) {
           style={[data.style, style]}
           tintColor={data.tintColor}
           handler={data.handler}
+          disabled={data.disabled}
           accessible={data.accessible}
           accessibilityLabel={data.accessibilityLabel}
         />
@@ -50,9 +51,9 @@ function getButtonElement(data, style) {
   );
 }
 
-function getTitleElement(data) {
+function getTitleElement(data, style) {
   if (!data || data.props) {
-    return <View style={styles.customTitle}>{data}</View>;
+    return <View style={[styles.customTitle, style]}>{data}</View>;
   }
 
   const colorStyle = data.tintColor ? { color: data.tintColor } : null;
@@ -87,6 +88,7 @@ export default class NavigationBar extends Component {
       PropTypes.oneOf([null]),
     ]),
     containerStyle: ViewPropTypes.style,
+    titleStyle: ViewPropTypes.style
   };
 
   static defaultProps = {
@@ -102,6 +104,7 @@ export default class NavigationBar extends Component {
       showAnimation: 'slide',
     },
     containerStyle: {},
+    titleStyle: {}
   };
 
   componentDidMount() {
@@ -130,6 +133,7 @@ export default class NavigationBar extends Component {
   render() {
     const {
       containerStyle,
+      titleStyle,
       tintColor,
       title,
       leftButton,
@@ -152,7 +156,7 @@ export default class NavigationBar extends Component {
       <View style={[styles.navBarContainer, containerStyle, customTintColor]}>
         {statusBar}
         <View style={[styles.navBar, style]}>
-          {getTitleElement(title)}
+          {getTitleElement(title, titleStyle)}
           {getButtonElement(leftButton, { marginLeft: 8 })}
           {getButtonElement(rightButton, { marginRight: 8 })}
         </View>
