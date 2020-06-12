@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Platform,
+  DeviceInfo,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import ViewPropTypes from './lib';
@@ -31,6 +32,7 @@ const StatusBarShape = {
   tintColor: PropTypes.string,
   hideAnimation: PropTypes.oneOf(['fade', 'slide', 'none']),
   showAnimation: PropTypes.oneOf(['fade', 'slide', 'none']),
+  iOSHeight: PropTypes.bool,
 };
 
 function getButtonElement(data, style) {
@@ -59,7 +61,8 @@ function getTitleElement(data) {
 
   return (
     <View style={styles.navBarTitleContainer}>
-      <Text ellipsizeMode={data.ellipsizeMode} numberOfLines={data.numberOfLines} style={[styles.navBarTitleText, data.style, colorStyle]}>
+      <Text ellipsizeMode={data.ellipsizeMode} numberOfLines={data.numberOfLines}
+            style={[styles.navBarTitleText, data.style, colorStyle]}>
         {data.title}
       </Text>
     </View>
@@ -100,6 +103,7 @@ export default class NavigationBar extends Component {
       hidden: false,
       hideAnimation: 'slide',
       showAnimation: 'slide',
+      iOSHeight: true,
     },
     containerStyle: {},
   };
@@ -138,14 +142,15 @@ export default class NavigationBar extends Component {
     } = this.props;
     const customTintColor = tintColor ? { backgroundColor: tintColor } : null;
 
-    const customStatusBarTintColor = this.props.statusBar.tintColor ?
-      { backgroundColor: this.props.statusBar.tintColor } : null;
-
     let statusBar = null;
 
     if (Platform.OS === 'ios') {
+      const customStatusBarTintColor = this.props.statusBar.tintColor ? { backgroundColor: this.props.statusBar.tintColor } : null;
+
+      const statusBarHeight = { height: this.props.statusBar.iOSHeight ? DeviceInfo.isIPhoneX_deprecated ? 44 : 20 : 0 };
+
       statusBar = !this.props.statusBar.hidden ?
-        <View style={[styles.statusBar, customStatusBarTintColor]} /> : null;
+        <View style={[customStatusBarTintColor, statusBarHeight]}/> : null;
     }
 
     return (

@@ -1,12 +1,8 @@
 const NAV_BAR_HEIGHT = 44;
-const STATUS_BAR_HEIGHT = 20;
 
 module.exports = {
   navBarContainer: {
     backgroundColor: 'white',
-  },
-  statusBar: {
-    height: STATUS_BAR_HEIGHT,
   },
   navBar: {
     height: NAV_BAR_HEIGHT,
