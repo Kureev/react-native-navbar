@@ -70,7 +70,10 @@ export default class NavigationBar extends Component {
   static propTypes = {
     style: ViewPropTypes.style,
     tintColor: PropTypes.string,
-    statusBar: PropTypes.shape(StatusBarShape),
+    statusBar: PropTypes.oneOfType([
+      PropTypes.shape(StatusBarShape),
+      PropTypes.oneOf([null, false]),
+    ]),
     leftButton: PropTypes.oneOfType([
       PropTypes.shape(ButtonShape),
       PropTypes.element,
@@ -114,7 +117,7 @@ export default class NavigationBar extends Component {
 
   customizeStatusBar() {
     const { statusBar } = this.props;
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === 'ios' && statusBar) {
       if (statusBar.style) {
         StatusBar.setBarStyle(statusBar.style);
       }
@@ -138,14 +141,14 @@ export default class NavigationBar extends Component {
     } = this.props;
     const customTintColor = tintColor ? { backgroundColor: tintColor } : null;
 
-    const customStatusBarTintColor = this.props.statusBar.tintColor ?
-      { backgroundColor: this.props.statusBar.tintColor } : null;
-
     let statusBar = null;
 
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === 'ios' && this.props.statusBar) {
       statusBar = !this.props.statusBar.hidden ?
-        <View style={[styles.statusBar, customStatusBarTintColor]} /> : null;
+        <View style={[
+          styles.statusBar,
+          this.props.statusBar.tintColor ? { backgroundColor: this.props.statusBar.tintColor } : null
+        ]} /> : null;
     }
 
     return (
