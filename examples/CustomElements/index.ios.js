@@ -1,10 +1,9 @@
-import React from 'react-native';
-const {
+import {
   AppRegistry,
-  Component,
   Text,
-  View
-} = React;
+  View,
+} from 'react-native';
+import React, { Component } from 'react';
 import NavigationBar from 'react-native-navbar';
 import Pickachu from './components/Pickachu';
 import Charmander from './components/Charmander';
