@@ -7,10 +7,13 @@ import {
 
 import PropTypes from 'prop-types'
 import styles from './styles';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function NavbarButton(props) {
   const {
     style,
+    icon,
+    iconSize,
     tintColor,
     title,
     handler,
@@ -28,7 +31,12 @@ export default function NavbarButton(props) {
       accessibilityLabel={accessibilityLabel}
     >
       <View style={style}>
-        <Text style={[styles.navBarButtonText, { color: tintColor }]}>{title}</Text>
+        <Text style={[styles.navBarButtonText, { color: tintColor }]}>
+          { icon &&
+            <Icon name={icon} size={iconSize} color={tintColor} /> 
+          }  
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -39,6 +47,8 @@ NavbarButton.propTypes = {
     PropTypes.object,
     PropTypes.array,
   ]),
+  icon: PropTypes.string,
+  iconSize: PropTypes.number,
   tintColor: PropTypes.string,
   title: PropTypes.string,
   handler: PropTypes.func,
@@ -49,6 +59,8 @@ NavbarButton.propTypes = {
 
 NavbarButton.defaultProps = {
   style: {},
+  icon: '',
+  iconSize: 22,
   title: '',
   tintColor: '#0076FF',
   disabled: false,
